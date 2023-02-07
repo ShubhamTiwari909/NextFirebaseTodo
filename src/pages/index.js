@@ -18,7 +18,7 @@ export default function Home() {
   //router
   const router = useRouter()
 
-  /* Checking if the user is logged in or not. If not, it will redirect to the register page. */
+  /* Checking if the user is logged in or not. If not, it will redirect to the Login page. */
   useEffect(() => {
     let token = sessionStorage.getItem("Token")
     setTokenId(token)
