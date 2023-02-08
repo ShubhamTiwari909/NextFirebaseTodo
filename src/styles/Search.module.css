@@ -1,0 +1,26 @@
+.searchForm{
+    margin-top: 50px;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.input_md{
+    border: 1px solid rgb(157, 124, 254);
+    border-radius:20px;
+    padding: 0.5rem 1rem;
+}
+.input_md:focus{
+    outline: none;
+}
+
+.button_sm{
+    border: none;
+    outline: 1px solid rgb(157, 124, 254);
+    outline-offset: 3px;
+    border-radius:20px;
+    padding: 0.4rem 1.2rem;
+    background-color:rgb(157, 124, 254);
+    color:#ffffff;
+}

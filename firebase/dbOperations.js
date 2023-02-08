@@ -10,18 +10,20 @@ export const databaseRef = collection(database, "TODO")
  * data from the database and sets the task to an empty string
  * @param e - the event object
  */
-export const addTask = (e, task, setTask, setTaskGroup) => {
+export const addTask = (e,title,setTitle, task, setTask, setTaskGroup) => {
     e.preventDefault();
-    if (task === "") {
-        alert("Please enter some value")
+    if (title === "" || title.startsWith(" ") || task === "" || task.startsWith(" ")) {
+        alert(`Please Fill both the fields`)
     }
     else {
         addDoc(databaseRef, {
             userId: sessionStorage.getItem("uid"),
+            title:title,
             task: task
         }).then(() => {
             getData(setTaskGroup)
             setTask("")
+            setTitle("")
         }).catch((err) => {
             console.error(err)
         })
@@ -30,8 +32,9 @@ export const addTask = (e, task, setTask, setTaskGroup) => {
 }
 
 // Update task
-export const getId = (id, task, setTask, setUpdateId, setUpdate) => {
+export const getId = (id,title,setTitle, task, setTask, setUpdateId, setUpdate) => {
     setUpdateId(id)
+    setTitle(title)
     setTask(task)
     setUpdate(true)
 }
@@ -40,18 +43,20 @@ export const getId = (id, task, setTask, setUpdateId, setUpdate) => {
  * `TODO` collection with the new task of `task`
  * @param e - the event object
  */
-export const updateTask = (e, task, setTask, setUpdateId, setUpdate, setTaskGroup, updateId) => {
+export const updateTask = (e,title,setTitle, task, setTask, setUpdateId, setUpdate, setTaskGroup, updateId) => {
     e.preventDefault();
-    if (task === "") {
-        alert("Please enter some value")
+    if (title === "" || title.startsWith(" ") || task === "" || task.startsWith(" ")) {
+        alert(`Please Fill both the fields`)
     }
     else {
 
         const fieldToUpdate = doc(database, "TODO", updateId)
         updateDoc(fieldToUpdate, {
+            title:title,
             task: task
         }).then(() => {
             setUpdateId(null)
+            setTitle("")
             setTask("")
             setUpdate(false)
             getData(setTaskGroup)

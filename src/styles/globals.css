@@ -9,3 +9,29 @@ a {
 button{
     cursor: pointer;
 }
+
+.grid_2{
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+.grid_2 > *{
+    flex:1;
+}
+
+.h-center{
+    display: flex;
+    justify-content: center
+}
+
+.m-t-20{
+    margin-top:20px
+}
+
+@media screen and (max-width: 768px) {
+    .grid_2{
+        gap: 1rem;
+    }
+}

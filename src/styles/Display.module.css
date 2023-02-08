@@ -1,0 +1,74 @@
+.listContainer {
+    margin-top:50px;
+    height:50vh;
+    overflow: auto;
+}
+.listContainer h1{
+    text-align:center;
+}
+
+.listTask{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem 2rem;
+}
+.listTask li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding:1rem 1.5rem;
+    border-radius: 10px;
+    background-color: rgb(131, 40, 200);
+    color: #ffffff;
+    text-shadow: 1px 1px 5px black;
+}
+.listTask li p{
+    min-width: 200px;
+    max-width: 200px;
+    height: 100px;
+    word-wrap: break-word;
+    overflow: auto;
+    font-size: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.textGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.buttonGroup{
+    margin-top:20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.button_update,.button_delete{
+    border: none;
+    border-radius: 20px;
+    padding: 0 0.8rem;
+    background-color: transparent;
+}
+
+
+.button_update{
+    outline: 1px solid white;
+    outline-offset: 3px;
+}
+
+.button_delete{
+    outline: 1px solid rgb(255, 81, 116);
+    outline-offset: 3px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .listTask{
+       justify-content: center;
+    }
+    .listTask li p{
+        height: 60px;
+    }
+}
