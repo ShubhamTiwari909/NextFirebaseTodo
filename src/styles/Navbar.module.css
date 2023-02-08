@@ -1,13 +1,19 @@
 .navbar{
-    background-color: rebeccapurple;
-    padding:1rem;
+    background-color: lightcyan;
+    padding:1rem 2rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap:2rem;
 }
 .navbar a{
-    color: white;
+    color: #000000;
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .buttonRed{
