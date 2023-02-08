@@ -5,7 +5,7 @@ import {FcGoogle} from "react-icons/fc";
 import {AiFillGithub} from "react-icons/ai"
 import styles from "@/styles/Login.module.css"
 
-export default function Login() {
+export default function Register() {
     const router = useRouter()
 
     useEffect(() => {

@@ -7,7 +7,6 @@ import styles from '@/styles/Home.module.css'
 import { getId, addTask, updateTask, deleteTask, getData } from '../../firebase/dbOperations'
 
 export default function Home() {
-
   //states
   const [tokenId, setTokenId] = useState("null");
   const [task, setTask] = useState("")
@@ -89,3 +88,5 @@ export default function Home() {
     </>
   )
 }
+
+
