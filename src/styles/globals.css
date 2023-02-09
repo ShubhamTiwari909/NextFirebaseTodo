@@ -17,9 +17,9 @@ button{
     gap: 2rem;
     padding: 0 1rem;
 }
-.grid_2 > *{
+/* .grid_2 > *{
     flex:1;
-}
+} */
 
 .h-center{
     display: flex;

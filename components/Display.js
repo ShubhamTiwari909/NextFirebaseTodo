@@ -3,7 +3,7 @@ import { TbEdit } from "react-icons/tb"
 import { MdDeleteSweep } from "react-icons/md"
 import styles from "../src/styles/Display.module.css"
 
-function Display({ taskGroup, setTitle, setTask, setTaskGroup, setUpdate, setUpdateId, search, getId, deleteTask}) {
+function Display({ taskGroup, setTitle, setTask,setPriority, setTaskGroup, setUpdate, setUpdateId, search, getId, deleteTask}) {
     return (
         <div className={styles.listContainer}>
             <h1>Task List</h1>
@@ -32,10 +32,14 @@ function Display({ taskGroup, setTitle, setTask, setTaskGroup, setUpdate, setUpd
                         <li key={data.id}>
                             <div className={styles.textGroup}>
                                 <h2>{data.title}</h2>
-                                <p>{data.task}</p>
+                                <p className={styles.priority_text}>Priority - {data.priority}</p>
+                                <p className={styles.description_text}>{data.task}</p>
                             </div>
                             <div className={styles.buttonGroup}>
-                                <button className={styles.button_update} onClick={() => getId(data.id, data.title, setTitle, data.task, setTask, setUpdateId, setUpdate)}><TbEdit size="1.2rem" color="white" /></button>
+                                <button className={styles.button_update} onClick={() =>  {
+                                    getId(data.id, data.title, setTitle, data.task, setTask,data.priority,setPriority, setUpdateId, setUpdate)
+                                    window.scrollTo(0, 0)
+                                }}><TbEdit size="1.2rem" color="white" /></button>
                                 <button className={styles.button_delete} onClick={() => deleteTask(data.id, setTaskGroup)}><MdDeleteSweep size="1.2rem" color="rgb(255, 81, 116)" /></button>
                             </div>
                         </li>

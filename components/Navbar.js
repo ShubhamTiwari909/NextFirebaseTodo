@@ -11,7 +11,7 @@ function Navbar({tokenId}) {
   
   return (
     <div className={styles.navbar}>
-      <Image src={Logo} width="100" height="70" />
+      <Image src={Logo} className={styles.logo} alt="logo" />
       <nav className={styles.nav}>
         <Link href="/">Home</Link>
         {tokenId ? <button className={styles.buttonRed}

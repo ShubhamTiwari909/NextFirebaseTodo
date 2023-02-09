@@ -2,24 +2,20 @@ import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import { getId, addTask, updateTask, deleteTask, getData } from '../../firebase/dbOperations'
 import { useRouter } from 'next/router'
-import styles from "@/styles/Home.module.css"
 import Navbar from '../../components/Navbar'
 import Search from '../../components/Search'
 import Form from '../../components/Form'
 import Display from '../../components/Display'
 
 
-import { getDocs,collection } from 'firebase/firestore'
-import {database} from "../../firebase/firebaseConfig"
-
 
 export default function Home({data}) {
-
   //states
   const [tokenId, setTokenId] = useState("null");
   const [uid,setUid] = useState("")
   const [title, setTitle] = useState("")
   const [task, setTask] = useState("")
+  const [priority, setPriority] = useState("")
   const [taskGroup, setTaskGroup] = useState([])
   const [update, setUpdate] = useState(false)
   const [updateId, setUpdateId] = useState(null)
@@ -59,12 +55,18 @@ export default function Home({data}) {
         {/* ADD TASK FORM */}
           <Form
             update={update}
+            setUpdate={setUpdate}
             title={title}
             setTitle={setTitle}
             task={task}
             setTask={setTask}
-            addTask={(e) => addTask(e,title,setTitle, task, setTask, setTaskGroup)}
-            updateTask={(e) => updateTask(e,title,setTitle, task, setTask, setUpdateId, setUpdate, setTaskGroup, updateId)}
+            priority={priority}
+            setPriority={setPriority}
+            addTask={(e) => addTask(e,title,setTitle, task, setTask,priority,setPriority, setTaskGroup)}
+            updateTask={(e) => {
+              updateTask(e,title,setTitle, task, setTask,priority,setPriority, setUpdateId, setUpdate, setTaskGroup, updateId)
+              window.scrollTo(0, window.innerHeight)
+            }}
           />
           {/* SEARCH FORM */}
           <Search search={search} setSearch={setSearch} />
@@ -76,6 +78,7 @@ export default function Home({data}) {
             taskGroup={taskGroup}
             setTitle={setTitle}
             setTask={setTask}
+            setPriority={setPriority}
             setTaskGroup={setTaskGroup}
             setUpdate={setUpdate}
             setUpdateId={setUpdateId}

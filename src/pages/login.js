@@ -22,7 +22,7 @@ export default function Login() {
         <>
             <section className={styles.container}>
                 <div className={styles.welcomeMessage}>
-                    <Image src={Logo} width="150" height="150" />
+                    <Image src={Logo} width="150" height="150" alt="logo" />
                     <h1>WELCOME TO EASE TO DO </h1>
                 </div>
                 <div className={styles.loginContainer}>
