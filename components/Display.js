@@ -30,6 +30,7 @@ function Display({ taskGroup, setTitle, setTask, setPriority,setDeadline, setTas
                 }).map((data) => {
                     return (
                         <Card 
+                        key={data.id}
                         data={data}
                         setTitle={setTitle}
                         setTask={setTask}

@@ -10,7 +10,7 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup,
         setAccordion(!accordion);
     }
     return (
-        <li key={data.id} style={{ height: accordion ? "280px" : "60px" }}>
+        <li style={{ height: accordion ? "280px" : "60px" }}>
             <div className={styles.textGroup}>
                 <h2 className='text-ellipse' onClick={accordionOpen}>{data.title}</h2>
                 <div className="flex-between">
