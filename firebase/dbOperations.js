@@ -7,65 +7,87 @@ import { database } from "../firebase/firebaseConfig"
  * data from the database and sets the task to an empty string
  * @param e - the event object
  */
-export const addTask = (e,title,setTitle, task, setTask,priority,setPriority,setTaskGroup) => {
+
+export const addTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, setTaskGroup) => {
+    console.log()
     e.preventDefault();
     if (title === "" || title.startsWith(" ") || task === "" || task.startsWith(" ")) {
         alert(`Please Fill both the fields`)
     }
     else {
-        const databaseRef = collection(database, sessionStorage.getItem("uid"))
-        addDoc(databaseRef, {
-            userId: sessionStorage.getItem("uid"),
-            title:title,
-            task: task,
-            priority: priority
-        }).then(() => {
-            getData(setTaskGroup)
-            setTask("")
-            setTitle("")
-            setPriority("")
-        }).catch((err) => {
-            console.error(err)
-        })
+        let date = new Date();
+        let d1 = Date.parse(deadline);
+        let d2 = Date.parse(date);
+        if (d1 < d2) {
+            alert("Deadline Date should not be lower than today date");
+        }
+        else {
+            const databaseRef = collection(database, sessionStorage.getItem("uid"))
+            addDoc(databaseRef, {
+                userId: sessionStorage.getItem("uid"),
+                title: title,
+                task: task,
+                priority: priority,
+                deadline: deadline
+            }).then(() => {
+                getData(setTaskGroup)
+                setTask("")
+                setTitle("")
+                setPriority("P1")
+                setDeadline("")
+            }).catch((err) => {
+                console.error(err)
+            })
+        }
     }
 
 }
 
 // Update task
-export const getId = (id,title,setTitle, task, setTask,priority,setPriority, setUpdateId, setUpdate) => {
+export const getId = (id, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, setUpdateId, setUpdate) => {
     setUpdateId(id)
     setTitle(title)
     setTask(task)
     setPriority(priority)
     setUpdate(true)
+    setDeadline(deadline)
 }
 /**
  * We're using the `updateDoc` function to update the document with the id of `updateId` in the
  * `TODO` collection with the new task of `task`
  * @param e - the event object
  */
-export const updateTask = (e,title,setTitle, task, setTask,priority,setPriority, setUpdateId, setUpdate, setTaskGroup, updateId) => {
+export const updateTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, setUpdateId, setUpdate, setTaskGroup, updateId) => {
     e.preventDefault();
     if (title === "" || title.startsWith(" ") || task === "" || task.startsWith(" ")) {
         alert(`Please Fill both the fields`)
     }
     else {
-
-        const fieldToUpdate = doc(database, sessionStorage.getItem("uid"), updateId)
-        updateDoc(fieldToUpdate, {
-            title:title,
-            task: task,
-            priority:priority
-        }).then(() => {
-            setUpdateId(null)
-            setTitle("")
-            setTask("")
-            setPriority("")
-            setUpdate(false)
-            getData(setTaskGroup)
-        }).catch((err) => {
-            console.error(err)
-        })
+        let date = new Date();
+        let d1 = Date.parse(deadline);
+        let d2 = Date.parse(date);
+        if (d1 < d2) {
+            alert("Deadline Date should not be lower than today date");
+        }
+        else {
+            const fieldToUpdate = doc(database, sessionStorage.getItem("uid"), updateId)
+            updateDoc(fieldToUpdate, {
+                title: title,
+                task: task,
+                priority: priority,
+                deadline: deadline
+            }).then(() => {
+                setUpdateId(null)
+                setTitle("")
+                setTask("")
+                setPriority("P1")
+                setDeadline("")
+                setUpdate(false)
+                getData(setTaskGroup)
+            }).catch((err) => {
+                console.error(err)
+            })
+        }
     }
 }
 

@@ -9,13 +9,13 @@ import Display from '../../components/Display'
 
 
 
-export default function Home({data}) {
+export default function Home() {
   //states
   const [tokenId, setTokenId] = useState("null");
-  const [uid,setUid] = useState("")
   const [title, setTitle] = useState("")
   const [task, setTask] = useState("")
-  const [priority, setPriority] = useState("")
+  const [priority, setPriority] = useState("P1")
+  const [deadline,setDeadline] = useState("")
   const [taskGroup, setTaskGroup] = useState([])
   const [update, setUpdate] = useState(false)
   const [updateId, setUpdateId] = useState(null)
@@ -30,7 +30,6 @@ export default function Home({data}) {
     setTokenId(token)
     if (token) {
       getData(setTaskGroup)
-      setUid(sessionStorage.getItem("uid"))
     }
     if (!token) {
       router.push("/login")
@@ -62,9 +61,11 @@ export default function Home({data}) {
             setTask={setTask}
             priority={priority}
             setPriority={setPriority}
-            addTask={(e) => addTask(e,title,setTitle, task, setTask,priority,setPriority, setTaskGroup)}
+            deadline={deadline}
+            setDeadline={setDeadline}
+            addTask={(e) => addTask(e,title,setTitle, task, setTask,priority,setPriority,deadline,setDeadline,setTaskGroup)}
             updateTask={(e) => {
-              updateTask(e,title,setTitle, task, setTask,priority,setPriority, setUpdateId, setUpdate, setTaskGroup, updateId)
+              updateTask(e,title,setTitle, task, setTask,priority,setPriority,deadline,setDeadline,setUpdateId, setUpdate, setTaskGroup, updateId)
               window.scrollTo(0, window.innerHeight)
             }}
           />
@@ -79,13 +80,14 @@ export default function Home({data}) {
             setTitle={setTitle}
             setTask={setTask}
             setPriority={setPriority}
+            setDeadline={setDeadline}
             setTaskGroup={setTaskGroup}
             setUpdate={setUpdate}
             setUpdateId={setUpdateId}
             search={search}
             getId={getId}
             deleteTask={deleteTask}
-            data={data} />
+             />
         </section>
       </main>
     </>

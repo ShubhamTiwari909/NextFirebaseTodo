@@ -13,7 +13,6 @@ function Navbar({tokenId}) {
     <div className={styles.navbar}>
       <Image src={Logo} className={styles.logo} alt="logo" />
       <nav className={styles.nav}>
-        <Link href="/">Home</Link>
         {tokenId ? <button className={styles.buttonRed}
           onClick={() => {
             sessionStorage.removeItem("Token")

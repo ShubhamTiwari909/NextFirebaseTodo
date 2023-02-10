@@ -1,6 +1,6 @@
 .listContainer {
     margin-top:50px;
-    height:50vh;
+    height:60vh;
     overflow: auto;
 }
 .listContainer h1{
@@ -15,14 +15,17 @@
     padding: 1rem 2rem;
 }
 .listTask li {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding:1rem 1.5rem;
+    padding:1rem 1rem;
     border-radius: 10px;
     background-color: rgb(131, 40, 200);
     color: #ffffff;
     text-shadow: 1px 1px 5px black;
+    overflow: hidden;
+    transition: height .3s linear;
 }
 .listTask li h2{
     text-align:center;

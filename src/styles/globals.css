@@ -10,6 +10,13 @@ button{
     cursor: pointer;
 }
 
+.flex-between {
+    display: flex;
+    gap: 1rem;
+    align-items:center;
+    justify-content: space-between;
+}
+
 .grid_2{
     display: flex;
     justify-content:center;
@@ -29,6 +36,14 @@ button{
 .m-t-20{
     margin-top:20px
 }
+
+.text-ellipse{
+    max-width: 200px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 
 @media screen and (max-width: 768px) {
     .grid_2{
