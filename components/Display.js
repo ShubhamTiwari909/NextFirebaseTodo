@@ -1,9 +1,7 @@
 import styles from "../src/styles/Display.module.css"
 import Card from './mini-components/Card'
 
-function Display({ taskGroup, setTitle, setTask, setPriority,setDeadline, setTaskGroup, setUpdate, setUpdateId, search, getId, deleteTask,getCompleted }) {
-
-
+function Display({ taskGroup, setTitle, setTask, setPriority, setDeadline, setTaskGroup, setUpdate, setUpdateId, search, searchCompleted, getId,setMenu, deleteTask, getCompleted }) {
     return (
         <div className={styles.listContainer}>
             <h1>Task List</h1>
@@ -14,6 +12,16 @@ function Display({ taskGroup, setTitle, setTask, setPriority,setDeadline, setTas
                     }
                     else {
                         return data.title.toUpperCase().startsWith(search.toUpperCase())
+                    }
+                }).filter(data => {
+                    if (searchCompleted === "Completed") {
+                        return data.completed === true
+                    }
+                    if (searchCompleted === "To Do") {
+                        return data.completed === false
+                    }
+                    else {
+                        return data
                     }
                 }).sort((a, b) => {
                     const taskA = a.title.toUpperCase(); // ignore upper and lowercase
@@ -29,19 +37,20 @@ function Display({ taskGroup, setTitle, setTask, setPriority,setDeadline, setTas
                     return 0;
                 }).map((data) => {
                     return (
-                        <Card 
-                        key={data.id}
-                        data={data}
-                        setTitle={setTitle}
-                        setTask={setTask}
-                        setPriority={setPriority}
-                        setDeadline={setDeadline}
-                        setTaskGroup={setTaskGroup}
-                        setUpdate={setUpdate}
-                        setUpdateId={setUpdateId}
-                        getId={getId}
-                        deleteTask={deleteTask}
-                        getCompleted={getCompleted}/>
+                        <Card
+                            key={data.id}
+                            data={data}
+                            setTitle={setTitle}
+                            setTask={setTask}
+                            setPriority={setPriority}
+                            setDeadline={setDeadline}
+                            setTaskGroup={setTaskGroup}
+                            setUpdate={setUpdate}
+                            setUpdateId={setUpdateId}
+                            getId={getId}
+                            setMenu={setMenu}
+                            deleteTask={deleteTask}
+                            getCompleted={getCompleted} />
                     )
                 })}
             </ul>

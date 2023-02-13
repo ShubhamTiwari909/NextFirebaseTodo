@@ -24,18 +24,23 @@ button{
     gap: 2rem;
     padding: 0 1rem;
 }
-/* .grid_2 > *{
-    flex:1;
-} */
 
 .h-center{
     display: flex;
     justify-content: center
 }
 
+.h-screen{
+    height:100vh;
+}
+
 .m-t-20{
     margin-top:20px
 }
+.p-t-20{
+    padding-top:20px
+}
+
 
 .text-ellipse{
     max-width: 200px;
@@ -58,6 +63,14 @@ button{
 .light-mode{
     background-color:whitesmoke;
     color: #18191A;
+}
+
+.menu{
+    border:1px solid grey;
+    padding:0.3rem 0.9rem;
+    background-color:royalblue;
+    border-radius: 20px;
+    color: whitesmoke;
 }
 
 @media screen and (max-width: 768px) {

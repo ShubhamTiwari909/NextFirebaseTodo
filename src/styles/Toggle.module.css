@@ -5,6 +5,7 @@
     border-radius: 20px;
     padding: 0.2rem 2rem;
     border: 5px solid rebeccapurple;
+    cursor: pointer;
 }
 
 .toggleCheckbox {

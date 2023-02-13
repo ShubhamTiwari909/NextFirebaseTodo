@@ -21,10 +21,12 @@ export default function Home() {
   const [update, setUpdate] = useState(false)
   const [updateId, setUpdateId] = useState(null)
   const [search, setSearch] = useState("");
+  const [searchCompleted, setSearchCompleted] = useState("All");
 
   // For dark mode
   const [toggle, setToggle] = useState(false)
 
+  const [menu, setMenu] = useState(false)
   const router = useRouter()
 
   /* Checking if the user is logged in or not. If not, it will redirect to the Login page. */
@@ -52,9 +54,12 @@ export default function Home() {
       {/* NAVBAR */}
       <Navbar tokenId={tokenId} />
 
-      <main className={toggle ? "dark-mode" : "light-mode"}>
+      <main className={`${toggle ? "dark-mode" : "light-mode"} h-screen`}>
         <Toggle toggle={toggle} setToggle={setToggle} />
-        <section className={`grid_2`}>
+        <div className='h-center p-t-20'>
+          <button className="menu" onClick={() => setMenu(!menu)}>Add a Task</button>
+        </div>
+        <section className={`h-center `} style={{ display: menu ? "flex" : "none" }}>
           {/* ADD TASK FORM */}
           <Form
             update={update}
@@ -73,9 +78,10 @@ export default function Home() {
               window.scrollTo(0, window.innerHeight)
             }}
           />
-          {/* SEARCH FORM */}
-          <Search search={search} setSearch={setSearch} />
         </section>
+
+        {/* SEARCH FORM */}
+        <Search search={search} setSearch={setSearch} searchCompleted={searchCompleted} setSearchCompleted={setSearchCompleted} />
 
         {/* READ TASKS */}
         <section>
@@ -90,7 +96,9 @@ export default function Home() {
             setUpdate={setUpdate}
             setUpdateId={setUpdateId}
             search={search}
+            searchCompleted={searchCompleted}
             getId={getId}
+            setMenu={setMenu}
             deleteTask={deleteTask}
             getCompleted={getCompleted}
           />

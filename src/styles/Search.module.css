@@ -4,6 +4,7 @@
     gap: 1rem;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .input_md{
@@ -25,6 +26,19 @@
     color:#ffffff;
 }
 
+.select_md{
+    appearance: none;
+    border: 1px solid lightblue;
+    border-radius: 10px;
+    padding:0.3rem 0.8rem;
+    color: black;
+    width: 100px;
+    min-width: 100px;
+}
+.select_md:focus,
+.select_md:hover{
+    outline:none
+}
 
 .closed{
     display: none;

@@ -6,7 +6,7 @@ import styles from "../../src/styles/Display.module.css"
 import greenTick from "../../src/images/green-tick.png"
 import redCross from "../../src/images/red-cross.png"
 
-function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup, setUpdate, setUpdateId, getId, deleteTask, getCompleted }) {
+function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup, setUpdate, setUpdateId, getId,setMenu, deleteTask, getCompleted }) {
     const [accordion, setAccordion] = useState(false)
 
     const accordionOpen = () => {
@@ -20,7 +20,7 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup,
                     <h2 className='text-ellipse' onClick={accordionOpen}>{data.title}</h2>
                     <div className='p-relative'>
                         <input className={styles.tickCheckbox} type="checkbox" name="complete" onChange={(e) => getCompleted(e, data.id, setTaskGroup)} />
-                        <Image src={data.completed ? redCross : greenTick} className={styles.completedIcon} alt="completed icon" />
+                        <Image src={data.completed ? greenTick : redCross} className={styles.completedIcon} alt="completed icon" />
                     </div>
                 </div>
                 <div className="flex-between" >
@@ -31,6 +31,7 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup,
             </div>
             <div className={styles.buttonGroup}>
                 <button className={styles.button_update} onClick={() => {
+                    setMenu(true)
                     getId(data.id, data.title, setTitle, data.task, setTask, data.priority, setPriority, data.deadline, setDeadline, setUpdateId, setUpdate)
                     window.scrollTo(0, 0)
                 }} disabled={data.completed ? "disabled" : ""}><TbEdit size="1.2rem" color={data.completed ? "grey" : "white"} /></button>
