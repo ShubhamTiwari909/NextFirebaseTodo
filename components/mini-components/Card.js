@@ -27,7 +27,7 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup,
                     <small>Deadline - {data.deadline}</small>
                     <small className={styles.priority_text}>{data.priority}</small>
                 </div>
-                <p className={styles.description_text}>{data.task} {data.completed.toString()}</p>
+                <p className={styles.description_text}>{data.task}</p>
             </div>
             <div className={styles.buttonGroup}>
                 <button className={styles.button_update} onClick={() => {
