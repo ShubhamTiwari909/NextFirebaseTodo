@@ -8,7 +8,7 @@ import { database } from "../firebase/firebaseConfig"
  * @param e - the event object
  */
 
-export const addTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, setTaskGroup) => {
+export const addTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted, setTaskGroup) => {
     console.log()
     e.preventDefault();
     if (title === "" || title.startsWith(" ") || task === "" || task.startsWith(" ")) {
@@ -28,13 +28,15 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
                 title: title,
                 task: task,
                 priority: priority,
-                deadline: deadline
+                deadline: deadline,
+                completed: completed
             }).then(() => {
                 getData(setTaskGroup)
                 setTask("")
                 setTitle("")
                 setPriority("P1")
                 setDeadline("")
+                setCompleted(false)
             }).catch((err) => {
                 console.error(err)
             })
@@ -117,4 +119,28 @@ export const deleteTask = (id, setTaskGroup) => {
         }).catch(err => {
             console.error(err)
         })
+}
+
+
+
+export const getCompleted = (e, id,setTaskGroup) => {
+    const fieldToUpdate = doc(database, sessionStorage.getItem("uid"), id)
+    if (e.target.checked) {
+        updateDoc(fieldToUpdate, {
+            completed: true
+        }).then(() => {
+            getData(setTaskGroup)
+        }).catch((err) => {
+            console.error(err)
+        })
+    }
+    else {
+        updateDoc(fieldToUpdate, {
+            completed: false
+        }).then(() => {
+            getData(setTaskGroup)
+        }).catch((err) => {
+            console.error(err)
+        })
+    }
 }

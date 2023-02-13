@@ -1,0 +1,82 @@
+.toggle {
+    position: fixed;
+    right: 1%;
+    z-index: 1;
+    border-radius: 20px;
+    padding: 0.2rem 2rem;
+    border: 5px solid rebeccapurple;
+}
+
+.toggleCheckbox {
+    appearance: none;
+}
+
+.circle {
+    position: absolute;
+    top: 7%;
+    left: 5%;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: all 0.3s linear;
+}
+
+.slideRight {
+    transform: translateX(190%);
+}
+
+.slideLeft {
+    transform: translateX(0);
+}
+
+.bg_nightsky {
+    background-image: url("https://media.istockphoto.com/id/1287456867/photo/clear-night-sky-with-milky-way-and-huge-amount-of-stars.jpg?b=1&s=170667a&w=0&k=20&c=SLNpoYFoVtYfIxrgMlVcTNzgm_oVWYRsLIgHLDeDkVU=");
+    background-size: cover;
+}
+
+.bg_daysky {
+    background-image: url("https://wallpaperaccess.com/full/4046909.jpg");
+    background-size: cover;
+}
+
+.bg_moon {
+    background-image: linear-gradient(to right top,
+            #f8c0e0,
+            #eec3e9,
+            #e3c6ef,
+            #d7caf4,
+            #cbcdf6,
+            #ccd1f6,
+            #cdd5f6,
+            #cfd9f5,
+            #dbdff5,
+            #e4e6f4,
+            #ededf4,
+            #f4f4f4);
+}
+
+.bg_sun {
+    background-image: linear-gradient(to right top,
+            #f1f8c0,
+            #eff6b7,
+            #edf5af,
+            #ebf3a6,
+            #e9f19d,
+            #e9f193,
+            #e8f289,
+            #e8f27f,
+            #eaf571,
+            #ebf961,
+            #edfc4f,
+            #eeff39);
+}
+
+
+/* Media Queries */
+
+@media screen and (max-width: 600px) {
+    .toggle {
+        bottom: 1%;
+    }
+}

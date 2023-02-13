@@ -44,6 +44,21 @@ button{
     overflow: hidden;
 }
 
+.p-relative{
+    position: relative;
+    isolation: isolate;
+}
+
+
+.dark-mode{
+    background-color:#18191A;
+    color: whitesmoke;
+}
+
+.light-mode{
+    background-color:whitesmoke;
+    color: #18191A;
+}
 
 @media screen and (max-width: 768px) {
     .grid_2{

@@ -1,26 +1,29 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
-import { getId, addTask, updateTask, deleteTask, getData } from '../../firebase/dbOperations'
+import { getId, addTask, updateTask, deleteTask, getData, getCompleted } from '../../firebase/dbOperations'
 import { useRouter } from 'next/router'
 import Navbar from '../../components/Navbar'
 import Search from '../../components/Search'
 import Form from '../../components/Form'
 import Display from '../../components/Display'
-
+import Toggle from '../../components/mini-components/Toggle'
 
 
 export default function Home() {
   //states
-  const [tokenId, setTokenId] = useState("null");
+  const [tokenId, setTokenId] = useState(null);
   const [title, setTitle] = useState("")
   const [task, setTask] = useState("")
   const [priority, setPriority] = useState("P1")
-  const [deadline,setDeadline] = useState("")
+  const [deadline, setDeadline] = useState("")
+  const [completed, setCompleted] = useState(false)
   const [taskGroup, setTaskGroup] = useState([])
   const [update, setUpdate] = useState(false)
   const [updateId, setUpdateId] = useState(null)
   const [search, setSearch] = useState("");
 
+  // For dark mode
+  const [toggle, setToggle] = useState(false)
 
   const router = useRouter()
 
@@ -49,9 +52,10 @@ export default function Home() {
       {/* NAVBAR */}
       <Navbar tokenId={tokenId} />
 
-      <main>
+      <main className={toggle ? "dark-mode" : "light-mode"}>
+        <Toggle toggle={toggle} setToggle={setToggle} />
         <section className={`grid_2`}>
-        {/* ADD TASK FORM */}
+          {/* ADD TASK FORM */}
           <Form
             update={update}
             setUpdate={setUpdate}
@@ -63,9 +67,9 @@ export default function Home() {
             setPriority={setPriority}
             deadline={deadline}
             setDeadline={setDeadline}
-            addTask={(e) => addTask(e,title,setTitle, task, setTask,priority,setPriority,deadline,setDeadline,setTaskGroup)}
+            addTask={(e) => addTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted, setTaskGroup)}
             updateTask={(e) => {
-              updateTask(e,title,setTitle, task, setTask,priority,setPriority,deadline,setDeadline,setUpdateId, setUpdate, setTaskGroup, updateId)
+              updateTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, setUpdateId, setUpdate, setTaskGroup, updateId)
               window.scrollTo(0, window.innerHeight)
             }}
           />
@@ -81,13 +85,15 @@ export default function Home() {
             setTask={setTask}
             setPriority={setPriority}
             setDeadline={setDeadline}
+            setCompleted={setCompleted}
             setTaskGroup={setTaskGroup}
             setUpdate={setUpdate}
             setUpdateId={setUpdateId}
             search={search}
             getId={getId}
             deleteTask={deleteTask}
-             />
+            getCompleted={getCompleted}
+          />
         </section>
       </main>
     </>

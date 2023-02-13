@@ -1,7 +1,7 @@
 import styles from "../src/styles/Display.module.css"
 import Card from './mini-components/Card'
 
-function Display({ taskGroup, setTitle, setTask, setPriority,setDeadline, setTaskGroup, setUpdate, setUpdateId, search, getId, deleteTask }) {
+function Display({ taskGroup, setTitle, setTask, setPriority,setDeadline, setTaskGroup, setUpdate, setUpdateId, search, getId, deleteTask,getCompleted }) {
 
 
     return (
@@ -40,7 +40,8 @@ function Display({ taskGroup, setTitle, setTask, setPriority,setDeadline, setTas
                         setUpdate={setUpdate}
                         setUpdateId={setUpdateId}
                         getId={getId}
-                        deleteTask={deleteTask}/>
+                        deleteTask={deleteTask}
+                        getCompleted={getCompleted}/>
                     )
                 })}
             </ul>

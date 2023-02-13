@@ -1,6 +1,6 @@
 .navbar{
     background-color: lightcyan;
-    padding:1rem 2rem;
+    padding:0.85rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,8 +17,8 @@
 }
 
 .logo{
-    width: 100px;
-    height: 80px;
+    width: 80px;
+    height: 70px;
 }
 
 .buttonRed{

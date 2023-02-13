@@ -5,7 +5,7 @@ function InputGroup({title,type,name,placeholder,className,value,onChange}) {
     return (
         <div>
             <div className={styles.formGroup}>
-                <label>{title}</label>
+                <label >{title}</label>
                 <input
                     type={type}
                     name={name}
