@@ -1,6 +1,6 @@
 import { doc, addDoc, collection, getDocs, updateDoc, deleteDoc } from 'firebase/firestore'
 import { database } from "../firebase/firebaseConfig";
-import { toast } from 'react-nextjs-toast'
+import { toast } from 'react-toastify'
 
 
 //  CRUD methods
@@ -39,11 +39,7 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
                 setPriority("P1")
                 setDeadline("")
                 setCompleted(false)
-                toast.notify('Task Added Successfully', {
-                    title: "Add",
-                    duration: 3,
-                    type: "success"
-                })
+                toast.success('Task Added Successfully')
             }).catch((err) => {
                 console.error(err)
             })
@@ -94,11 +90,7 @@ export const updateTask = (e, title, setTitle, task, setTask, priority, setPrior
                 setDeadline("")
                 setUpdate(false)
                 getData(setTaskGroup)
-                toast.notify('Task Updated Successfully', {
-                    title: "Update",
-                    duration: 3,
-                    type: "info"
-                })
+                toast.success('Task Updated Successfully')
             }).catch((err) => {
                 console.error(err)
             })
@@ -129,11 +121,7 @@ export const deleteTask = (id, setTaskGroup) => {
     deleteDoc(fieldToUpdate, id)
         .then(() => {
             getData(setTaskGroup)
-            toast.notify('Task Deleted Successfully', {
-                title: "Delete",
-                duration: 3,
-                type: "error"
-            })
+            toast.error('Task Deleted Successfully')
         }).catch(err => {
             console.error(err)
         })
@@ -148,11 +136,7 @@ export const getCompleted = (e, id, setTaskGroup) => {
             completed: true
         }).then(() => {
             getData(setTaskGroup)
-            toast.notify('Task Completed Successfully', {
-                title: "Completed",
-                duration: 3,
-                type: "success"
-            })
+            toast.success('Task Completed Successfully')
         }).catch((err) => {
             console.error(err)
         })
@@ -162,11 +146,7 @@ export const getCompleted = (e, id, setTaskGroup) => {
             completed: false
         }).then(() => {
             getData(setTaskGroup)
-            toast.notify('Task Not Completed', {
-                title: "Not Completed",
-                duration: 3,
-                type: "error"
-            })
+            toast.warning('Task Not Completed')
         }).catch((err) => {
             console.error(err)
         })
