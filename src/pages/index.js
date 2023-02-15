@@ -44,7 +44,7 @@ export default function Home() {
     if (!token) {
       router.push("/login")
     }
-  }, [tokenId])
+  }, [])
 
 
   return (
