@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import { getId, addTask, updateTask, deleteTask, getData, getCompleted } from '../../firebase/dbOperations'
 import { useRouter } from 'next/router'
+
+import {toast, ToastContainer } from 'react-nextjs-toast'
 import Navbar from '../../components/Navbar'
 import Search from '../../components/Search'
 import Form from '../../components/Form'
@@ -35,6 +37,10 @@ export default function Home() {
     setTokenId(token)
     if (token) {
       getData(setTaskGroup)
+      toast.notify('Welcome', {
+        duration: 2,
+        type: "success"
+      })
     }
     if (!token) {
       router.push("/login")
@@ -52,6 +58,7 @@ export default function Home() {
       </Head>
 
       {/* NAVBAR */}
+      <ToastContainer/>
       <Navbar tokenId={tokenId} />
 
       <main className={`${toggle ? "dark-mode" : "light-mode"} h-screen`}>

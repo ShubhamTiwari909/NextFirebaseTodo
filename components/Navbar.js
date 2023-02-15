@@ -17,6 +17,7 @@ function Navbar({tokenId}) {
           onClick={() => {
             sessionStorage.removeItem("Token")
             router.push("/login")
+           
           }}>Logout</button> : ""}
         {!tokenId ? <Link href="/login">Login</Link> : ""}
       </nav>

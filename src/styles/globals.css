@@ -34,6 +34,10 @@ button{
     height:100vh;
 }
 
+.m-t-5{
+    margin-top:5px
+}
+
 .m-t-20{
     margin-top:20px
 }
@@ -49,9 +53,22 @@ button{
     overflow: hidden;
 }
 
+.cursor-pointer{
+    cursor: pointer;
+}
 .p-relative{
     position: relative;
     isolation: isolate;
+}
+
+.p-absolute{
+    position: absolute;
+}
+
+.absolute-bottom-center{
+    bottom: 0%;
+    left:50%;
+    transform: translateX(-50%);
 }
 
 
