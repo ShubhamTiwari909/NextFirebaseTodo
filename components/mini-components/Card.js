@@ -20,12 +20,12 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup,
                 <div className="flex-between">
                     <h2 className='text-ellipse cursor-pointer flex-between' onClick={accordionOpen}>
                         {data.title}
-                        {accordion ? <BsArrowUpCircleFill size="1rem" color="white" /> : <BsArrowDownCircleFill size="1rem" color="white" />}
                     </h2>
-                    <div className='p-relative'>
+                    <div className='p-relative m-r-16'>
                         <input className={styles.tickCheckbox} type="checkbox" name="complete" onChange={(e) => getCompleted(e, data.id, setTaskGroup)} />
                         <Image src={data.completed ? greenTick : redCross} className={styles.completedIcon} alt="completed icon" />
                     </div>
+                    <div className="p-absolute right-5 cursor-pointer" onClick={accordionOpen}>{accordion ? <BsArrowUpCircleFill size="1rem" color="white" /> : <BsArrowDownCircleFill size="1rem" color="white" />}</div>
                 </div>
                 <div className="flex-between" >
                     <small>Deadline - {data.deadline}</small>

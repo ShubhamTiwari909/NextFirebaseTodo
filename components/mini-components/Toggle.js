@@ -5,6 +5,7 @@ function Toggle({ toggle, setToggle }) {
     return (
         <label htmlFor="toggle" className={`${styles.toggle} ${toggle ? styles.bg_nightsky : styles.bg_daysky}`} onClick={() => {
             setToggle(!toggle)
+            sessionStorage.setItem("Theme",toggle)
             toggle ?
                 toast.info('Switched to Light Mode') :
                 toast.info('Switched to Dark Mode')

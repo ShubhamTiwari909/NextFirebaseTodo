@@ -41,6 +41,11 @@ button{
 .m-t-20{
     margin-top:20px
 }
+
+.m-r-16{
+    margin-right: 1rem;
+}
+
 .p-t-20{
     padding-top:20px
 }
@@ -71,6 +76,9 @@ button{
     transform: translateX(-50%);
 }
 
+.right-5{
+    right: 5px;
+}
 
 .dark-mode{
     background-color:#18191A;

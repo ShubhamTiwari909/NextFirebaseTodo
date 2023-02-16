@@ -17,10 +17,11 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
         alert(`Please Fill both the fields`)
     }
     else {
-        let date = new Date();
-        let d1 = Date.parse(deadline);
-        let d2 = Date.parse(date);
-        if (d1 < d2) {
+        let curr = new Date();
+        curr.setDate(curr.getDate());
+        let date = curr.toISOString().substring(0, 10);
+
+        if (deadline < date) {
             alert("Deadline Date should not be lower than today date");
         }
         else {
@@ -37,7 +38,7 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
                 setTask("")
                 setTitle("")
                 setPriority("P1")
-                setDeadline("")
+                setDeadline(date)
                 setCompleted(false)
                 toast.success('Task Added Successfully')
             }).catch((err) => {
@@ -69,10 +70,11 @@ export const updateTask = (e, title, setTitle, task, setTask, priority, setPrior
         alert(`Please Fill both the fields`)
     }
     else {
-        let date = new Date();
-        let d1 = Date.parse(deadline);
-        let d2 = Date.parse(date);
-        if (d1 < d2) {
+        let curr = new Date();
+        curr.setDate(curr.getDate());
+        let date = curr.toISOString().substring(0, 10);
+
+        if (deadline < date) {
             alert("Deadline Date should not be lower than today date");
         }
         else {
@@ -87,7 +89,7 @@ export const updateTask = (e, title, setTitle, task, setTask, priority, setPrior
                 setTitle("")
                 setTask("")
                 setPriority("P1")
-                setDeadline("")
+                setDeadline(date)
                 setUpdate(false)
                 getData(setTaskGroup)
                 toast.success('Task Updated Successfully')

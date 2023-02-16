@@ -14,12 +14,18 @@ import Toggle from '../../components/mini-components/Toggle'
 
 
 export default function Home() {
+
+  // For date input
+  let curr = new Date();
+  curr.setDate(curr.getDate());
+  let date = curr.toISOString().substring(0, 10);
+
   //states
   const [tokenId, setTokenId] = useState(null);
   const [title, setTitle] = useState("")
   const [task, setTask] = useState("")
   const [priority, setPriority] = useState("P1")
-  const [deadline, setDeadline] = useState("")
+  const [deadline, setDeadline] = useState(date)
   const [completed, setCompleted] = useState(false)
   const [taskGroup, setTaskGroup] = useState([])
   const [update, setUpdate] = useState(false)
@@ -44,6 +50,7 @@ export default function Home() {
     if (!token) {
       router.push("/login")
     }
+    setToggle(Boolean(sessionStorage.getItem("Theme")) || false)
   }, [])
 
 
