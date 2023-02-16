@@ -23,7 +23,6 @@ function Navbar({tokenId}) {
               router.push("/login")
             }, 1000);
           }}>Logout</button> : ""}
-        {!tokenId ? <Link href="/login">Login</Link> : ""}
       </nav>
     </div>
   )
