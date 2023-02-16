@@ -16,10 +16,9 @@ import Toggle from '../../components/mini-components/Toggle'
 export default function Home() {
 
   // For date input
-  let curr = new Date();
-  curr.setDate(curr.getDate());
-  let date = curr.toISOString().substring(0, 10);
-
+  var curr = new Date();
+  curr.setDate(curr.getDate() + 3);
+  var date = curr.toISOString().substring(0, 10);
   //states
   const [tokenId, setTokenId] = useState(null);
   const [title, setTitle] = useState("")
