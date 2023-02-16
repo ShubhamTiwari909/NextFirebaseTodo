@@ -11,6 +11,7 @@ import Search from '../../components/Search'
 import Form from '../../components/Form'
 import Display from '../../components/Display'
 import Toggle from '../../components/mini-components/Toggle'
+import { darkMode } from '../../methods/Darkmode';
 
 
 export default function Home() {
@@ -72,7 +73,7 @@ export default function Home() {
       <Navbar tokenId={tokenId} />
 
       <main className={`${toggle ? "dark-mode" : "light-mode"} h-screen`}>
-        <Toggle toggle={toggle} setToggle={setToggle} />
+        <Toggle toggle={toggle} setToggle={setToggle} onClick={() => darkMode(toggle,setToggle)} />
         <div className='h-center p-t-20'>
           <button className="menu" onClick={() => setMenu(!menu)}>Add a Task</button>
         </div>

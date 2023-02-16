@@ -1,11 +1,10 @@
 import React from 'react'
-import Link from 'next/link'
 import Image from "next/image"
 import { useRouter } from 'next/router'
 import styles from '../src/styles/Navbar.module.css'
 import Logo from "../src/images/logo.png"
+import { logout } from '../methods/Logout'
 
-import {toast} from "react-toastify"
 
 function Navbar({tokenId}) {
   //router
@@ -16,13 +15,7 @@ function Navbar({tokenId}) {
       <Image src={Logo} className={styles.logo} alt="logo" />
       <nav className={styles.nav}>
         {tokenId ? <button className={styles.buttonRed}
-          onClick={() => {
-            sessionStorage.removeItem("Token")
-            toast.error("logged out")
-            setTimeout(() => {
-              router.push("/login")
-            }, 1000);
-          }}>Logout</button> : ""}
+          onClick={() => logout(router)}>Logout</button> : ""}
       </nav>
     </div>
   )

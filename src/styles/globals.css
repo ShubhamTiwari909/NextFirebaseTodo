@@ -1,8 +1,10 @@
+/* Basic resetting */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 a {
     text-decoration: none;
 }
@@ -10,19 +12,26 @@ button{
     cursor: pointer;
 }
 
-.flex-between {
+
+/* FLEX */
+.flex-between-center {
     display: flex;
     gap: 1rem;
     align-items:center;
     justify-content: space-between;
 }
 
-.grid_2{
+.flex-2{
     display: flex;
-    justify-content:center;
-    flex-wrap: wrap;
     gap: 2rem;
-    padding: 0 1rem;
+}
+
+.justify-center{
+    justify-content:center;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .h-center{
@@ -30,10 +39,14 @@ button{
     justify-content: center
 }
 
+
+/* HEIGHT */
 .h-screen{
     height:100vh;
 }
 
+
+/* MARGINS */
 .m-t-5{
     margin-top:5px
 }
@@ -46,11 +59,18 @@ button{
     margin-right: 1rem;
 }
 
+
+/* PADDINGS */
 .p-t-20{
     padding-top:20px
 }
 
+.p-x-16{
+    padding: 0 1rem;
+}
 
+
+/* TYPOGRAPHY */
 .text-ellipse{
     max-width: 200px;
     text-overflow: ellipsis;
@@ -61,6 +81,9 @@ button{
 .cursor-pointer{
     cursor: pointer;
 }
+
+
+/* POSITIONS */
 .p-relative{
     position: relative;
     isolation: isolate;
@@ -80,6 +103,10 @@ button{
     right: 5px;
 }
 
+
+
+
+/* DARK MODE */
 .dark-mode{
     background-color:#18191A;
     color: whitesmoke;
@@ -90,6 +117,9 @@ button{
     color: #18191A;
 }
 
+
+
+/* MENU BUTTON */
 .menu{
     border:1px solid grey;
     padding:0.3rem 0.9rem;

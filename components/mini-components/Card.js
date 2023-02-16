@@ -17,8 +17,8 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup,
         <li className='p-relative' style={{ height: accordion ? "280px" : "60px" }}>
             <p className={styles.completed}>{data.completed ? 'Completed' : ''}</p>
             <div className={styles.textGroup} style={{ textDecoration: data.completed ? "line-through" : "" }}>
-                <div className="flex-between">
-                    <h2 className='text-ellipse cursor-pointer flex-between' onClick={accordionOpen}>
+                <div className="flex-between-center">
+                    <h2 className='text-ellipse cursor-pointer flex-between-center' onClick={accordionOpen}>
                         {data.title}
                     </h2>
                     <div className='p-relative m-r-16'>
@@ -27,7 +27,7 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup,
                     </div>
                     <div className="p-absolute right-5 cursor-pointer" onClick={accordionOpen}>{accordion ? <BsArrowUpCircleFill size="1rem" color="white" /> : <BsArrowDownCircleFill size="1rem" color="white" />}</div>
                 </div>
-                <div className="flex-between" >
+                <div className="flex-between-center" >
                     <small>Deadline - {data.deadline}</small>
                     <small className={styles.priority_text}>{data.priority}</small>
                 </div>

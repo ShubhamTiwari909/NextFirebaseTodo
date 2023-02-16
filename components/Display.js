@@ -1,3 +1,5 @@
+import { sortTask } from "../methods/Sorting"
+import { priorityFilter, searchFilter } from "../methods/SearchFilter"
 import styles from "../src/styles/Display.module.css"
 import Card from './mini-components/Card'
 
@@ -6,36 +8,12 @@ function Display({ taskGroup, setTitle, setTask, setPriority, setDeadline, setTa
         <div className={styles.listContainer}>
             <h1>Task List</h1>
             <ul className={styles.listTask}>
-                {taskGroup.length === 0 ? <h2>No Task Found</h2> : taskGroup.filter(data => {
-                    if (search === "" || search.startsWith(" ")) {
-                        return data
-                    }
-                    else {
-                        return data.title.toUpperCase().startsWith(search.toUpperCase())
-                    }
-                }).filter(data => {
-                    if (searchCompleted === "Completed") {
-                        return data.completed === true
-                    }
-                    if (searchCompleted === "To Do") {
-                        return data.completed === false
-                    }
-                    else {
-                        return data
-                    }
-                }).sort((a, b) => {
-                    const taskA = a.title.toUpperCase(); // ignore upper and lowercase
-                    const taskB = b.title.toUpperCase(); // ignore upper and lowercase
-                    if (taskA < taskB) {
-                        return -1;
-                    }
-                    if (taskA > taskB) {
-                        return 1;
-                    }
-
-                    // names must be equal
-                    return 0;
-                }).map((data) => {
+                {taskGroup.length === 0 ? <h2>No Task Found</h2> : 
+                taskGroup
+                .filter((data)  => searchFilter(data,search))
+                .filter((data) => priorityFilter(data,searchCompleted))
+                .sort((a, b) => sortTask(a,b))
+                .map((data) => {
                     return (
                         <Card
                             key={data.id}

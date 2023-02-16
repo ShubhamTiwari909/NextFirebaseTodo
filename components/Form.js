@@ -42,7 +42,7 @@ function Form({ update, setUpdate, title, setTitle, task, setTask, priority, set
             <div className="h-center m-t-20">
                 {update
                     ?
-                    <div className="grid_2">
+                    <div className="flex-2 justify-center flex-wrap p-x-16">
                         <button className={styles.button_sm} onClick={updateTask}>Update</button>
                         <button className={`${styles.button_sm} ${styles.button_cancel}`} onClick={() => {
                             setTitle("")
