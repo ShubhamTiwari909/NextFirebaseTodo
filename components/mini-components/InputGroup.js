@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import styles from '../../src/styles/Form.module.css'
 
 function InputGroup({title,type,name,placeholder,className,value,onChange}) {
@@ -17,6 +18,17 @@ function InputGroup({title,type,name,placeholder,className,value,onChange}) {
             </div>
         </div>
     )
+}
+
+
+InputGroup.propTypes = {
+    title:PropTypes.string,
+    type:PropTypes.string,
+    name:PropTypes.string,
+    placeholder:PropTypes.string,
+    className:PropTypes.string,
+    value:PropTypes.any,
+    onChange:PropTypes.func
 }
 
 export default InputGroup

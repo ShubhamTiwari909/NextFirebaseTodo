@@ -2,6 +2,8 @@ import { sortTask } from "../methods/Sorting"
 import { priorityFilter, searchFilter } from "../methods/SearchFilter"
 import styles from "../src/styles/Display.module.css"
 import Card from './mini-components/Card'
+import PropTypes from "prop-types";
+
 
 function Display({ taskGroup, setTitle, setTask, setPriority, setDeadline, setTaskGroup, setUpdate, setUpdateId, search, searchCompleted, getId,setMenu, deleteTask, getCompleted }) {
     return (
@@ -34,6 +36,23 @@ function Display({ taskGroup, setTitle, setTask, setPriority, setDeadline, setTa
             </ul>
         </div>
     )
+}
+
+Display.propTypes = {
+    taskGroup: PropTypes.array,
+    setTitle: PropTypes.func,
+    setTask:PropTypes.func,
+    setPriority:PropTypes.func,
+    setDeadline:PropTypes.func,
+    setTaskGroup:PropTypes.func,
+    setUpdate: PropTypes.func,
+    setUpdateId:PropTypes.func,
+    search:PropTypes.string,
+    searchCompleted:PropTypes.string,
+    getId:PropTypes.func,
+    setMenu:PropTypes.func,
+    deleteTask:PropTypes.func,
+    getCompleted:PropTypes.func,
 }
 
 export default Display

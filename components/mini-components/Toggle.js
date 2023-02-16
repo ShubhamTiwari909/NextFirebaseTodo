@@ -1,5 +1,6 @@
 import styles from "../../src/styles/Toggle.module.css"
-import { toast } from 'react-toastify'
+import PropTypes from "prop-types";
+
 
 function Toggle({ toggle,onClick }) {
     return (
@@ -8,6 +9,11 @@ function Toggle({ toggle,onClick }) {
             <span className={`${styles.circle} ${toggle ? styles.bg_moon : styles.bg_sun} ${toggle ? styles.slideRight : styles.slideLeft}`}></span>
         </label>
     )
+}
+
+Toggle.propTypes = {
+    toggle: PropTypes.bool,
+    onClick:PropTypes.func
 }
 
 export default Toggle

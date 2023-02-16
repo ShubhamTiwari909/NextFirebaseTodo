@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 
 function SelectField({className,value,onChange,options=[]}) {
   return (
@@ -14,4 +15,11 @@ function SelectField({className,value,onChange,options=[]}) {
   )
 }
 
+
+SelectField.propTypes = {
+  className: PropTypes.string,
+  value: PropTypes.any,
+  onChange:PropTypes.func,
+  options:PropTypes.array
+} 
 export default SelectField

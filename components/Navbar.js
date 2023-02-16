@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import styles from '../src/styles/Navbar.module.css'
 import Logo from "../src/images/logo.png"
 import { logout } from '../methods/Logout'
-
+import PropTypes from "prop-types"
 
 function Navbar({tokenId}) {
   //router
@@ -19,6 +19,9 @@ function Navbar({tokenId}) {
       </nav>
     </div>
   )
+}
+Navbar.propTypes = {
+  tokenId: PropTypes.bool
 }
 
 export default Navbar

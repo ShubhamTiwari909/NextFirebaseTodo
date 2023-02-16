@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { useState } from 'react'
+import PropTypes from "prop-types";
 import { TbEdit } from "react-icons/tb"
 import { MdDeleteSweep } from "react-icons/md"
 import { BsArrowDownCircleFill, BsArrowUpCircleFill } from "react-icons/bs"
@@ -46,6 +47,22 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup,
             </div>
         </li>
     )
+}
+
+Card.propTypes = {
+    data:PropTypes.object,
+    setTitle: PropTypes.func,
+    setTask:PropTypes.func,
+    setPriority:PropTypes.func,
+    setDeadline:PropTypes.func,
+    setTaskGroup:PropTypes.func,
+    setUpdate: PropTypes.func,
+    setUpdateId:PropTypes.func,
+    getId:PropTypes.func,
+    setMenu:PropTypes.func,
+    deleteTask:PropTypes.func,
+    getCompleted:PropTypes.func,
+
 }
 
 export default Card

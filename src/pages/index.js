@@ -18,7 +18,7 @@ export default function Home() {
 
   // For date input
   var curr = new Date();
-  curr.setDate(curr.getDate() + 3);
+  curr.setDate(curr.getDate());
   var date = curr.toISOString().substring(0, 10);
   //states
   const [tokenId, setTokenId] = useState(null);
@@ -70,7 +70,7 @@ export default function Home() {
         closeOnClick
         theme="colored"
       />
-      <Navbar tokenId={tokenId} />
+      <Navbar tokenId={Boolean(tokenId)} />
 
       <main className={`${toggle ? "dark-mode" : "light-mode"} h-screen`}>
         <Toggle toggle={toggle} setToggle={setToggle} onClick={() => darkMode(toggle,setToggle)} />

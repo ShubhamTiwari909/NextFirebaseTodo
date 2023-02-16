@@ -1,6 +1,7 @@
 import styles from '../src/styles/Form.module.css'
 import InputGroup from './mini-components/InputGroup'
 import SelectField from './mini-components/SelectField'
+import PropTypes from "prop-types"
 
 function Form({ update, setUpdate, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, addTask, updateTask }) {
     return (
@@ -59,4 +60,18 @@ function Form({ update, setUpdate, title, setTitle, task, setTask, priority, set
     )
 }
 
+Form.propTypes = {
+    title: PropTypes.string,
+    task: PropTypes.string,
+    priority:PropTypes.string,
+    deadline:PropTypes.string,
+    update:PropTypes.bool,
+    setUpdate: PropTypes.func,
+    setTitle: PropTypes.func,
+    setTask:PropTypes.func,
+    setPriority:PropTypes.func,
+    setDeadline:PropTypes.func,
+    addTask: PropTypes.func,
+    updateTask: PropTypes.func 
+}
 export default Form
