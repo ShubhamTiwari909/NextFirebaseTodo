@@ -45,7 +45,7 @@ export default function Home() {
             sessionStorage.removeItem("Token")
             router.push("/login")
           }}>Logout</button> : ""}
-        {/* {!tokenId ? <Link href="/login">Login</Link> : ""} */}
+        {!tokenId ? <Link href="/login">Login</Link> : ""}
       </nav>
       <main className={styles.container}>
         {/* ADD TASK FORM */}
