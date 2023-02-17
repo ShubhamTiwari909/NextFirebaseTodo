@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 
 
 function Display({ taskGroup, setTitle, setTask, setPriority, setDeadline, setTaskGroup, setUpdate, setUpdateId, search, searchCompleted, getId,setMenu, deleteTask, getCompleted }) {
+    
     return (
         <div className={styles.listContainer}>
             <h1>Task List</h1>
@@ -30,7 +31,8 @@ function Display({ taskGroup, setTitle, setTask, setPriority, setDeadline, setTa
                             getId={getId}
                             setMenu={setMenu}
                             deleteTask={deleteTask}
-                            getCompleted={getCompleted} />
+                            getCompleted={getCompleted}
+                            />
                     )
                 })}
             </ul>

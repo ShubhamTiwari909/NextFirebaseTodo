@@ -1,7 +1,5 @@
 .listContainer {
     margin-top:50px;
-    height:60vh;
-    overflow: auto;
 }
 .listContainer h1{
     text-align:center;

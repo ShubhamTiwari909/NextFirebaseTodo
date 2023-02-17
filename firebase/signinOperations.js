@@ -8,7 +8,7 @@ export const signupWithGoogle = (router) => {
         .then(response => {
             sessionStorage.setItem("Token", response.user.accessToken)
             sessionStorage.setItem("uid", response.user.email + response.user.accessToken.slice(0,15))
-            router.push("/")
+            router.push("/home")
         })
         .catch(err => console.log("error"))
 }
@@ -17,7 +17,7 @@ export const signupWithGithub = (router) => {
         .then(response => {
             sessionStorage.setItem("Token", response.user.accessToken)
             sessionStorage.setItem("uid", response.user.providerData[0].email + response.user.accessToken.slice(0,15))
-            router.push("/")
+            router.push("/home")
         })
         .catch(err => console.log("error"))
 }

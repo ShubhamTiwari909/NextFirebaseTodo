@@ -3,7 +3,7 @@ import InputGroup from './mini-components/InputGroup'
 import SelectField from './mini-components/SelectField'
 import PropTypes from "prop-types"
 
-function Form({ update, setUpdate, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, addTask, updateTask }) {
+function Form({ update, setUpdate, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, setMenu, addTask, updateTask }) {
     return (
         <div>
             <form className={styles.todoForm}>
@@ -44,8 +44,12 @@ function Form({ update, setUpdate, title, setTitle, task, setTask, priority, set
                 {update
                     ?
                     <div className="flex-2 justify-center flex-wrap p-x-16">
-                        <button className={styles.button_sm} onClick={updateTask}>Update</button>
+                        <button className={styles.button_sm} onClick={(e) => {
+                            updateTask(e)
+                            setMenu(false)
+                        }}>Update</button>
                         <button className={`${styles.button_sm} ${styles.button_cancel}`} onClick={() => {
+                            setMenu(false)
                             setTitle("")
                             setTask("")
                             setPriority("P1")
@@ -54,7 +58,10 @@ function Form({ update, setUpdate, title, setTitle, task, setTask, priority, set
                         }}>Cancel</button>
                     </div>
                     :
-                    <button className={styles.button_sm} onClick={addTask}>Add</button>}
+                    <button className={styles.button_sm} onClick={(e) => {
+                        addTask(e)
+                        setMenu(false)
+                    }}>Add</button>}
             </div>
         </div>
     )
@@ -63,15 +70,15 @@ function Form({ update, setUpdate, title, setTitle, task, setTask, priority, set
 Form.propTypes = {
     title: PropTypes.string,
     task: PropTypes.string,
-    priority:PropTypes.string,
-    deadline:PropTypes.string,
-    update:PropTypes.bool,
+    priority: PropTypes.string,
+    deadline: PropTypes.string,
+    update: PropTypes.bool,
     setUpdate: PropTypes.func,
     setTitle: PropTypes.func,
-    setTask:PropTypes.func,
-    setPriority:PropTypes.func,
-    setDeadline:PropTypes.func,
+    setTask: PropTypes.func,
+    setPriority: PropTypes.func,
+    setDeadline: PropTypes.func,
     addTask: PropTypes.func,
-    updateTask: PropTypes.func 
+    updateTask: PropTypes.func
 }
 export default Form

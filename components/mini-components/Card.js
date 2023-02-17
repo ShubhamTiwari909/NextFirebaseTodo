@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState,useRef } from 'react'
 import PropTypes from "prop-types";
 import { TbEdit } from "react-icons/tb"
 import { MdDeleteSweep } from "react-icons/md"
@@ -10,12 +10,14 @@ import redCross from "../../src/images/red-cross.png"
 
 function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup, setUpdate, setUpdateId, getId, setMenu, deleteTask, getCompleted }) {
     const [accordion, setAccordion] = useState(false)
-
+    const listRef = useRef(null);
     const accordionOpen = () => {
         setAccordion(!accordion);
+        listRef.current?.scrollIntoView();
     }
+    console.count("Rendered: ")
     return (
-        <li className='p-relative' style={{ height: accordion ? "280px" : "60px" }}>
+        <li className='p-relative' style={{ height: accordion ? "280px" : "60px" }} ref={listRef}>
             <p className={styles.completed}>{data.completed ? 'Completed' : ''}</p>
             <div className={styles.textGroup} style={{ textDecoration: data.completed ? "line-through" : "" }}>
                 <div className="flex-between-center">
@@ -38,7 +40,6 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup,
                 <button className={styles.button_update} onClick={() => {
                     setMenu(true)
                     getId(data.id, data.title, setTitle, data.task, setTask, data.priority, setPriority, data.deadline, setDeadline, setUpdateId, setUpdate)
-                    window.scrollTo(0, 0)
                 }} disabled={data.completed ? "disabled" : ""}><TbEdit size="1.2rem" color={data.completed ? "grey" : "white"} /></button>
                 <button className={styles.button_delete} onClick={() => {
                     setAccordion(false);

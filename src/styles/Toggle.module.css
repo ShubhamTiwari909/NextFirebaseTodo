@@ -78,6 +78,6 @@
 
 @media screen and (max-width: 600px) {
     .toggle {
-        bottom: 1%;
+        bottom: 1rem;
     }
 }
