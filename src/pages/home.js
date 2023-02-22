@@ -77,7 +77,7 @@ export default function Home() {
 
       <main>
         <Toggle toggle={toggle} setToggle={setToggle} onClick={() => darkMode(toggle, setToggle)} />
-        <div className='p-fixed z-100 sm-bottom-1'>
+        <div className='p-fixed z-100 sm-bottom-1 w-full'>
           <div className='m-l-16 m-b-10'>
             <button className="menu" onClick={() => setMenu(!menu)}>Add or Search</button>
           </div>
