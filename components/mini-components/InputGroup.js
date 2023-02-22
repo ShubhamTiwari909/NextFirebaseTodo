@@ -2,19 +2,21 @@ import React from 'react'
 import PropTypes from "prop-types";
 import styles from '../../src/styles/Form.module.css'
 
-function InputGroup({title,type,name,placeholder,className,value,onChange}) {
+function InputGroup({title,type,name,placeholder,className,value,onChange,accept,labelClassname=""}) {
     return (
         <div>
             <div className={styles.formGroup}>
-                <label >{title}</label>
+                <label for={name} className={labelClassname}>{title}</label>
                 <input
+                    id={name}
                     type={type}
                     name={name}
                     placeholder={placeholder}
                     className={className}
                     value={value}
-                    onChange={onChange} />
-
+                    onChange={onChange}
+                    accept={accept}
+                     />
             </div>
         </div>
     )

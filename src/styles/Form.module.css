@@ -23,20 +23,43 @@
     outline: none;
 }
 
+
+/* FILE INPUT */
+.input_file{
+    display: none;
+}
+
+.file_label{
+    border: 1px solid #ffffff;
+    padding:.2rem .5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* BUTTONS */
 .button_sm {
     border: none;
-    outline: 1px solid rgb(157, 124, 254);
     outline-offset: 3px;
     border-radius: 20px;
     padding: 0.4rem 1.2rem;
-    background-color: rgb(157, 124, 254);
     color: #ffffff;
+}
+
+.button_purple{
+    outline: 1px solid rgb(157, 124, 254);
+    background-color: rgb(157, 124, 254);
+}
+.button_blue{
+    outline: 1px solid rgb(124, 191, 254);
+    background-color: rgb(124, 191, 254);
 }
 
 .button_cancel{
     outline: 1px solid rgb(241, 79, 79);
     background-color: rgb(241, 79,79 );
 }
+
 
 
 .select_md{

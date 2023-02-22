@@ -27,6 +27,9 @@ export default function Home() {
   const [priority, setPriority] = useState("P1")
   const [deadline, setDeadline] = useState(date)
   const [completed, setCompleted] = useState(false)
+  const [file, setFile] = useState("");
+  const [url, setUrl] = useState("");
+  const [percent,setPercent] = useState(0)
   const [taskGroup, setTaskGroup] = useState([])
   const [update, setUpdate] = useState(false)
   const [updateId, setUpdateId] = useState(null)
@@ -93,10 +96,15 @@ export default function Home() {
                 setPriority={setPriority}
                 deadline={deadline}
                 setDeadline={setDeadline}
+                file={file}
+                setFile={setFile}
+                setUrl={setUrl}
+                percent={percent}
+                setPercent={setPercent}
                 setMenu={setMenu}
-                addTask={(e) => addTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted, setTaskGroup)}
+                addTask={(e) => addTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted,url,setUrl, setTaskGroup)}
                 updateTask={(e) => {
-                  updateTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, setUpdateId, setUpdate, setTaskGroup, updateId)
+                  updateTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline,url,setUrl, setUpdateId, setUpdate, setTaskGroup, updateId)
                   window.scrollTo(0, window.innerHeight)
                 }}
               />
@@ -114,6 +122,7 @@ export default function Home() {
             setTask={setTask}
             setPriority={setPriority}
             setDeadline={setDeadline}
+            setUrl={setUrl}
             setCompleted={setCompleted}
             setTaskGroup={setTaskGroup}
             setUpdate={setUpdate}
@@ -126,6 +135,7 @@ export default function Home() {
             getCompleted={getCompleted}
           />
         </section>
+       
       </main>
     </div>
   )

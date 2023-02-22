@@ -5,7 +5,7 @@ import Card from './mini-components/Card'
 import PropTypes from "prop-types";
 
 
-function Display({ taskGroup, setTitle, setTask, setPriority, setDeadline, setTaskGroup, setUpdate, setUpdateId, search, searchCompleted, getId,setMenu, deleteTask, getCompleted }) {
+function Display({ taskGroup, setTitle, setTask, setPriority, setDeadline,setUrl, setTaskGroup, setUpdate, setUpdateId, search, searchCompleted, getId,setMenu, deleteTask, getCompleted }) {
     
     return (
         <div className={styles.listContainer}>
@@ -25,6 +25,7 @@ function Display({ taskGroup, setTitle, setTask, setPriority, setDeadline, setTa
                             setTask={setTask}
                             setPriority={setPriority}
                             setDeadline={setDeadline}
+                            setUrl={setUrl}
                             setTaskGroup={setTaskGroup}
                             setUpdate={setUpdate}
                             setUpdateId={setUpdateId}

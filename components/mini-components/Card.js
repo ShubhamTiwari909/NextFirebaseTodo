@@ -8,7 +8,7 @@ import styles from "../../src/styles/Display.module.css"
 import greenTick from "../../src/images/green-tick.png"
 import redCross from "../../src/images/red-cross.png"
 
-function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup, setUpdate, setUpdateId, getId, setMenu, deleteTask, getCompleted }) {
+function Card({ data, setTitle, setTask, setPriority, setDeadline,setUrl, setTaskGroup, setUpdate, setUpdateId, getId, setMenu, deleteTask, getCompleted }) {
     const [accordion, setAccordion] = useState(false)
     const listRef = useRef(null);
     const accordionOpen = () => {
@@ -17,7 +17,7 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup,
     }
     console.count("Rendered: ")
     return (
-        <li className='p-relative' style={{ height: accordion ? "280px" : "60px" }} ref={listRef}>
+        <li className='p-relative' style={{ height: accordion ? "500px" : "60px" }} ref={listRef}>
             <p className={styles.completed}>{data.completed ? 'Completed' : ''}</p>
             <div className={styles.textGroup} style={{ textDecoration: data.completed ? "line-through" : "" }}>
                 <div className="flex-between-center">
@@ -36,10 +36,13 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setTaskGroup,
                 </div>
                 <p className={styles.description_text}>{data.task}</p>
             </div>
+            <div>
+            <img src={data.url} alt="logo" width={200} height={200} />
+            </div>
             <div className={styles.buttonGroup}>
                 <button className={styles.button_update} onClick={() => {
                     setMenu(true)
-                    getId(data.id, data.title, setTitle, data.task, setTask, data.priority, setPriority, data.deadline, setDeadline, setUpdateId, setUpdate)
+                    getId(data.id, data.title, setTitle, data.task, setTask, data.priority, setPriority, data.deadline, setDeadline,data.url,setUrl, setUpdateId, setUpdate)
                 }} disabled={data.completed ? "disabled" : ""}><TbEdit size="1.2rem" color={data.completed ? "grey" : "white"} /></button>
                 <button className={styles.button_delete} onClick={() => {
                     setAccordion(false);

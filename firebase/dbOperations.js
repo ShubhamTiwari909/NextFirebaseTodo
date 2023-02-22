@@ -10,7 +10,7 @@ import { toast } from 'react-toastify'
  * @param e - the event object
  */
 
-export const addTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted, setTaskGroup) => {
+export const addTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted,url,setUrl, setTaskGroup) => {
     console.log()
     e.preventDefault();
     if (title === "" || title.startsWith(" ") || task === "" || task.startsWith(" ")) {
@@ -32,7 +32,8 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
                 task: task,
                 priority: priority,
                 deadline: deadline,
-                completed: completed
+                completed: completed,
+                url: url,
             }).then(() => {
                 getData(setTaskGroup)
                 setTask("")
@@ -40,6 +41,7 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
                 setPriority("P1")
                 setDeadline(date)
                 setCompleted(false)
+                setUrl("")
                 toast.success('Task Added Successfully')
             }).catch((err) => {
                 console.error(err)
@@ -51,20 +53,21 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
 }
 
 // Update task
-export const getId = (id, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, setUpdateId, setUpdate) => {
+export const getId = (id, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline,url,setUrl, setUpdateId, setUpdate) => {
     setUpdateId(id)
     setTitle(title)
     setTask(task)
     setPriority(priority)
     setUpdate(true)
     setDeadline(deadline)
+    setUrl(url)
 }
 /**
  * We're using the `updateDoc` function to update the document with the id of `updateId` in the
  * `TODO` collection with the new task of `task`
  * @param e - the event object
  */
-export const updateTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, setUpdateId, setUpdate, setTaskGroup, updateId) => {
+export const updateTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline,url,setUrl, setUpdateId, setUpdate, setTaskGroup, updateId) => {
     e.preventDefault();
     if (title === "" || title.startsWith(" ") || task === "" || task.startsWith(" ")) {
         alert(`Please Fill both the fields`)
@@ -83,13 +86,15 @@ export const updateTask = (e, title, setTitle, task, setTask, priority, setPrior
                 title: title,
                 task: task,
                 priority: priority,
-                deadline: deadline
+                deadline: deadline,
+                url:url
             }).then(() => {
                 setUpdateId(null)
                 setTitle("")
                 setTask("")
                 setPriority("P1")
                 setDeadline(date)
+                setUrl("")
                 setUpdate(false)
                 getData(setTaskGroup)
                 toast.success('Task Updated Successfully')
