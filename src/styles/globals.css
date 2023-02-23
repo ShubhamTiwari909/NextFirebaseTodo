@@ -109,6 +109,12 @@ button {
 .cursor-pointer {
     cursor: pointer;
 }
+.text-center {
+    text-align: center;
+}
+.font-w-600{
+    font-weight: 600;
+}
 
 
 /* POSITIONS */
@@ -151,10 +157,24 @@ button {
 }
 
 
+.bottom-0 {
+    bottom: 0;
+    top: unset;
+}
 
+
+
+
+/* DISPLAY */
+.d-block{
+    display: block;
+}
+.d-none{
+    display: none;
+}
 
 /* DARK MODE */
-.dark-mode {
+/* .dark-mode {
     background-color: #18191A;
     color: whitesmoke;
 }
@@ -162,7 +182,7 @@ button {
 .light-mode {
     background-color: whitesmoke;
     color: #18191A;
-}
+} */
 
 
 
@@ -181,16 +201,18 @@ button {
 .formContainer {
     border-radius: 10px;
     padding: 1rem;
+    background-color:#280346;
+    color: #ffffff;
+    border: 5px solid rgb(170, 20, 220);
 }
+
+
+/* DARK MODE */
+
 
 
 @media screen and (max-width: 768px) {
     .grid_2 {
         gap: 0.2rem;
-    }
-
-    .sm-bottom-1 {
-        bottom: 0.2rem;
-        top: unset;
     }
 }

@@ -26,7 +26,7 @@
     color: #ffffff;
     text-shadow: 1px 1px 5px black;
     overflow: hidden;
-    transition: height .3s linear;
+    transition: max-height .3s linear;
 }
 .listTask li h2{
     text-align:center;
@@ -37,87 +37,9 @@
     font-family: Arial, Helvetica, sans-serif
 }
 
-.description_text{
-    min-width: 200px;
-    max-width: 200px;
-    margin: 10px 0 0 0;
-    height: 100px;
-    overflow: auto;
-}
-.priority_text{
-    text-align: center;
-    padding: 0.4rem 0.6rem;
-    background-color: #000000;
-    color: white;
-    border-radius:20px;
-    font-size: 0.8rem;
-    letter-spacing:1px
-}
-.textGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-.buttonGroup{
-    margin-top:20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-}
-
-.button_update,.button_delete{
-    border: none;
-    border-radius: 20px;
-    padding: 0 0.8rem;
-    background-color: transparent;
-}
-
-
-.button_update{
-    outline: 1px solid white;
-    outline-offset: 3px;
-}
-
-.button_delete{
-    outline: 1px solid rgb(255, 81, 116);
-    outline-offset: 3px;
-}
-
-
-.completed{
-    position: absolute;
-    top:6px;
-    left:50%;
-    transform: translate(-50%,0);
-    text-align: center;
-    color: rgb(90, 250, 90);
-}
-
-.tickCheckbox{
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: 1px solid aliceblue;
-    cursor: pointer;
-}
-
-.completedIcon{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 17px;
-    height: 17px;
-    z-index: -1;
-}
-
 
 @media screen and (max-width: 768px) {
     .listTask{
        justify-content: center;
-    }
-    .description_text{
-        height: 60px;
     }
 }

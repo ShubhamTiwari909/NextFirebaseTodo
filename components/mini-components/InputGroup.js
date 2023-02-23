@@ -6,7 +6,7 @@ function InputGroup({title,type,name,placeholder,className,value,onChange,accept
     return (
         <div>
             <div className={styles.formGroup}>
-                <label for={name} className={labelClassname}>{title}</label>
+                <label htmlFor={name} className={labelClassname}>{title}</label>
                 <input
                     id={name}
                     type={type}

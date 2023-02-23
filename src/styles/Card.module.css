@@ -1,0 +1,85 @@
+.description_text{
+    min-width: 200px;
+    max-width: 200px;
+    margin: 10px 0 0 0;
+    max-height: 100px;
+    overflow: auto;
+}
+.priority_text{
+    text-align: center;
+    padding: 0.4rem 0.6rem;
+    background-color: #000000;
+    color: white;
+    border-radius:20px;
+    font-size: 0.8rem;
+    letter-spacing:1px
+}
+.textGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.buttonGroup{
+    margin-top:20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.button_update,.button_delete{
+    border: none;
+    border-radius: 20px;
+    padding: 0 0.8rem;
+    background-color: transparent;
+}
+
+
+.button_update{
+    outline: 1px solid white;
+    outline-offset: 3px;
+}
+
+.button_delete{
+    outline: 1px solid rgb(255, 81, 116);
+    outline-offset: 3px;
+}
+
+
+.completed{
+    position: absolute;
+    top:6px;
+    left:50%;
+    transform: translate(-50%,0);
+    text-align: center;
+    color: rgb(90, 250, 90);
+}
+
+.tickCheckbox{
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid aliceblue;
+    cursor: pointer;
+}
+
+.completedIcon{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 17px;
+    height: 17px;
+    z-index: -1;
+}
+
+
+
+/* IMAGE */
+.img_fluid{
+    width: 100%;
+    height:150px;
+    object-fit:fill;
+    border: 1px solid violet;
+    border-radius: 10px;
+}

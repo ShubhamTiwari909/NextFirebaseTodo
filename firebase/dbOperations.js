@@ -1,5 +1,7 @@
 import { doc, addDoc, collection, getDocs, updateDoc, deleteDoc } from 'firebase/firestore'
 import { database } from "../firebase/firebaseConfig";
+import { ref, deleteObject } from "firebase/storage"
+import storage from "./firebaseConfig"
 import { toast } from 'react-toastify'
 
 
@@ -10,11 +12,13 @@ import { toast } from 'react-toastify'
  * @param e - the event object
  */
 
-export const addTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted,url,setUrl, setTaskGroup) => {
-    console.log()
+export const addTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted, url, setUrl,file,setFile, setPercent, setTaskGroup) => {
     e.preventDefault();
     if (title === "" || title.startsWith(" ") || task === "" || task.startsWith(" ")) {
         alert(`Please Fill both the fields`)
+    }
+    else if (file === ""){
+        alert(`Please Select and Upload the image`)
     }
     else {
         let curr = new Date();
@@ -33,7 +37,8 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
                 priority: priority,
                 deadline: deadline,
                 completed: completed,
-                url: url,
+                url: url.url,
+                filename: url.filename
             }).then(() => {
                 getData(setTaskGroup)
                 setTask("")
@@ -41,7 +46,9 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
                 setPriority("P1")
                 setDeadline(date)
                 setCompleted(false)
-                setUrl("")
+                setFile("")
+                setUrl({})
+                setPercent(0)
                 toast.success('Task Added Successfully')
             }).catch((err) => {
                 console.error(err)
@@ -53,7 +60,7 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
 }
 
 // Update task
-export const getId = (id, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline,url,setUrl, setUpdateId, setUpdate) => {
+export const getId = (id, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, url, setUrl, setUpdateId, setUpdate) => {
     setUpdateId(id)
     setTitle(title)
     setTask(task)
@@ -67,10 +74,13 @@ export const getId = (id, title, setTitle, task, setTask, priority, setPriority,
  * `TODO` collection with the new task of `task`
  * @param e - the event object
  */
-export const updateTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline,url,setUrl, setUpdateId, setUpdate, setTaskGroup, updateId) => {
+export const updateTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, url, setUrl,file,setFile, setPercent, setUpdateId, setUpdate, setTaskGroup, updateId) => {
     e.preventDefault();
     if (title === "" || title.startsWith(" ") || task === "" || task.startsWith(" ")) {
         alert(`Please Fill both the fields`)
+    }
+    else if (file === ""){
+        alert(`Please Select and Upload the image`)
     }
     else {
         let curr = new Date();
@@ -80,6 +90,9 @@ export const updateTask = (e, title, setTitle, task, setTask, priority, setPrior
         if (deadline < date) {
             alert("Deadline Date should not be lower than today date");
         }
+        else if(url.url === "" || url.filename === ""){
+            alert("Please Upload the image")
+        }
         else {
             const fieldToUpdate = doc(database, sessionStorage.getItem("uid"), updateId)
             updateDoc(fieldToUpdate, {
@@ -87,15 +100,18 @@ export const updateTask = (e, title, setTitle, task, setTask, priority, setPrior
                 task: task,
                 priority: priority,
                 deadline: deadline,
-                url:url
+                url: url.url,
+                filename: url.filename
             }).then(() => {
                 setUpdateId(null)
                 setTitle("")
                 setTask("")
                 setPriority("P1")
                 setDeadline(date)
-                setUrl("")
+                setFile("")
+                setUrl({})
                 setUpdate(false)
+                setPercent(0)
                 getData(setTaskGroup)
                 toast.success('Task Updated Successfully')
             }).catch((err) => {
@@ -123,8 +139,16 @@ export const getData = async (setTaskGroup) => {
 /**
  * It deletes a task from the database.
  */
-export const deleteTask = (id, setTaskGroup) => {
+export const deleteTask = (id, setTaskGroup, filename) => {
     const fieldToUpdate = doc(database, sessionStorage.getItem("uid"), id)
+    const storageRef = ref(storage, `/files/${filename}`);
+    // Delete the file
+    deleteObject(storageRef).then(() => {
+        console.log("File deleted successfully")
+    }).catch((error) => {
+        console.log("Uh-oh, an error occurred!")
+    });
+
     deleteDoc(fieldToUpdate, id)
         .then(() => {
             getData(setTaskGroup)

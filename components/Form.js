@@ -5,6 +5,7 @@ import PropTypes from "prop-types"
 import { handleUpload } from "../methods/UploadImage"
 
 function Form({ update, setUpdate, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, file, setFile, setUrl, percent, setPercent, setMenu, addTask, updateTask }) {
+
     return (
         <div>
             <form className={styles.todoForm}>
@@ -42,15 +43,17 @@ function Form({ update, setUpdate, title, setTitle, task, setTask, priority, set
                     options={["P1", "P2", "P3", "P4", "P5"]} />
             </form>
             <div className="flex-2 justify-center items-center flex-wrap m-t-20">
-               <InputGroup
-                title="Choose a File"
-                type="file"
-                name="file"
-                placeholder=""
-                className={styles.input_file}
-                onChange={(e) => setFile(e.target.files[0])}
-                labelClassname={styles.file_label} 
-                accept="image/*"/>
+                <InputGroup
+                    title="Choose a File"
+                    type="file"
+                    name="file"
+                    placeholder=""
+                    className={styles.input_file}
+                    onChange={(e) => {
+                        setFile(e.target.files[0])
+                    }}
+                    labelClassname={styles.file_label}
+                    accept="image/*" />
                 <button onClick={() => handleUpload(file, setUrl, setPercent)} className={`${styles.button_sm} ${styles.button_blue}`}>Upload</button>
                 <p>{percent} % done</p>
             </div>
@@ -58,7 +61,7 @@ function Form({ update, setUpdate, title, setTitle, task, setTask, priority, set
                 {update
                     ?
                     <div className="flex-2 justify-center flex-wrap p-x-16">
-                        <button className={`${styles.button_sm} ${styles.button_purple}`}onClick={(e) => {
+                        <button className={`${styles.button_sm} ${styles.button_purple}`} onClick={(e) => {
                             updateTask(e)
                             setMenu(false)
                         }}>Update</button>

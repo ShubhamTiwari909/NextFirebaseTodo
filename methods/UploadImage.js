@@ -4,9 +4,10 @@ import {
     ref,
     uploadBytesResumable,
     getDownloadURL,
+    getMetadata
 } from "firebase/storage";
 
-export function handleUpload(file,setUrl,setPercent) {
+export function handleUpload(file, setUrl, setPercent) {
     if (!file) {
         alert("Please choose a file first!");
     }
@@ -14,7 +15,12 @@ export function handleUpload(file,setUrl,setPercent) {
     const uploadTask = uploadBytesResumable(storageRef, file);
     uploadTask.then((snapshot) => {
         getDownloadURL(snapshot.ref).then((url) => {
-            setUrl(url)
+            getMetadata(snapshot.ref)
+                .then((metadata) => {
+                    setUrl({url:url,filename:metadata.name})
+                })
+                .catch((error) => {
+                });
         });
     });
     uploadTask.on(
