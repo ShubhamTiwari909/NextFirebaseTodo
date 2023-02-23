@@ -11,7 +11,7 @@ export function handleUpload(file, setUrl, setPercent) {
     if (!file) {
         alert("Please choose a file first!");
     }
-    const storageRef = ref(storage, `/files/${file.name}`);
+    const storageRef = ref(storage, `/${sessionStorage.getItem("uid")}/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
     uploadTask.then((snapshot) => {
         getDownloadURL(snapshot.ref).then((url) => {

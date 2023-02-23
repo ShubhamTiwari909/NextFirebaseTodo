@@ -141,7 +141,7 @@ export const getData = async (setTaskGroup) => {
  */
 export const deleteTask = (id, setTaskGroup, filename) => {
     const fieldToUpdate = doc(database, sessionStorage.getItem("uid"), id)
-    const storageRef = ref(storage, `/files/${filename}`);
+    const storageRef = ref(storage, `/${sessionStorage.getItem("uid")}/${filename}`);
     // Delete the file
     deleteObject(storageRef).then(() => {
         console.log("File deleted successfully")
