@@ -12,7 +12,7 @@ import { toast } from 'react-toastify'
  * @param e - the event object
  */
 
-export const addTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted, url, setUrl,file,setFile, setPercent, setTaskGroup) => {
+export const addTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted, url, setUrl, setPercent, setTaskGroup) => {
     e.preventDefault();
     if (title === "" || title.startsWith(" ") || task === "" || task.startsWith(" ")) {
         alert(`Please Fill both the fields`)
@@ -32,8 +32,8 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
             const databaseRef = collection(database, sessionStorage.getItem("uid"))
             addDoc(databaseRef, {
                 userId: sessionStorage.getItem("uid"),
-                title: title,
-                task: task,
+                title: title.toString().slice(0,12),
+                task: task.toString().slice(0,140),
                 priority: priority,
                 deadline: deadline,
                 completed: completed,
@@ -46,7 +46,6 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
                 setPriority("P1")
                 setDeadline(date)
                 setCompleted(false)
-                setFile("")
                 setUrl({})
                 setPercent(0)
                 toast.success('Task Added Successfully')
@@ -60,27 +59,24 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
 }
 
 // Update task
-export const getId = (id, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, url, setUrl, setUpdateId, setUpdate) => {
+export const getId = (id, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, url, filename,setUrl, setUpdateId, setUpdate) => {
     setUpdateId(id)
     setTitle(title)
     setTask(task)
     setPriority(priority)
     setUpdate(true)
     setDeadline(deadline)
-    setUrl(url)
+    setUrl({url:url,filename:filename})
 }
 /**
  * We're using the `updateDoc` function to update the document with the id of `updateId` in the
  * `TODO` collection with the new task of `task`
  * @param e - the event object
  */
-export const updateTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, url, setUrl,file,setFile, setPercent, setUpdateId, setUpdate, setTaskGroup, updateId) => {
+export const updateTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, url, setUrl, setPercent, setUpdateId, setUpdate, setTaskGroup, updateId) => {
     e.preventDefault();
     if (title === "" || title.startsWith(" ") || task === "" || task.startsWith(" ")) {
         alert(`Please Fill both the fields`)
-    }
-    else if (file === ""){
-        alert(`Please Select and Upload the image`)
     }
     else {
         let curr = new Date();
@@ -96,8 +92,8 @@ export const updateTask = (e, title, setTitle, task, setTask, priority, setPrior
         else {
             const fieldToUpdate = doc(database, sessionStorage.getItem("uid"), updateId)
             updateDoc(fieldToUpdate, {
-                title: title,
-                task: task,
+                title: title.toString().slice(0,12),
+                task: task.toString().slice(0,140),
                 priority: priority,
                 deadline: deadline,
                 url: url.url,
@@ -108,7 +104,6 @@ export const updateTask = (e, title, setTitle, task, setTask, priority, setPrior
                 setTask("")
                 setPriority("P1")
                 setDeadline(date)
-                setFile("")
                 setUrl({})
                 setUpdate(false)
                 setPercent(0)

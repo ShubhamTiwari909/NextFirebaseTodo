@@ -4,15 +4,27 @@ import PropTypes from "prop-types";
 import { TbEdit } from "react-icons/tb"
 import { MdDeleteSweep } from "react-icons/md"
 import { BsArrowDownCircleFill, BsArrowUpCircleFill } from "react-icons/bs"
+import { BiCloudDownload } from "react-icons/bi"
+import * as htmlToImage from 'html-to-image';
 import styles from "../../src/styles/Card.module.css"
 import greenTick from "../../src/images/green-tick.png"
 import redCross from "../../src/images/red-cross.png"
 
 function Card({ data, setTitle, setTask, setPriority, setDeadline, setUrl, setTaskGroup, setUpdate, setUpdateId, getId, setMenu, deleteTask, getCompleted }) {
     const [accordion, setAccordion] = useState(false)
+    const [hideButtons, setHideButtons] = useState(false)
     const listRef = useRef(null);
     const accordionOpen = () => {
         setAccordion(!accordion);
+    }
+
+    const downloadImage = async (filename) => {
+        const dataUrl = await htmlToImage.toPng(listRef.current);
+        // download image
+        const link = document.createElement('a');
+        link.download = `${filename}.png`;
+        link.href = dataUrl;
+        link.click();
     }
 
     return (
@@ -46,15 +58,22 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setUrl, setTa
                 </div>
                 <p className={styles.description_text}>{data.task}</p>
             </div>
-            <div className={styles.buttonGroup}>
+            <div className={`${styles.buttonGroup}`} style={{display: hideButtons ? "none" : ""}}>
                 <button className={styles.button_update} onClick={() => {
                     setMenu(true)
-                    getId(data.id, data.title, setTitle, data.task, setTask, data.priority, setPriority, data.deadline, setDeadline, data.url, setUrl, setUpdateId, setUpdate)
+                    getId(data.id, data.title, setTitle, data.task, setTask, data.priority, setPriority, data.deadline, setDeadline, data.url,data.filename, setUrl, setUpdateId, setUpdate)
                 }} disabled={data.completed ? "disabled" : ""}><TbEdit size="1.2rem" color={data.completed ? "grey" : "white"} /></button>
                 <button className={styles.button_delete} onClick={() => {
                     setAccordion(false);
                     deleteTask(data.id, setTaskGroup, data.filename)
                 }}><MdDeleteSweep size="1.2rem" color="rgb(255, 81, 116)" /></button>
+                <button onClick={() => {
+                    setHideButtons(true)
+                    downloadImage(data.filename)
+                    setTimeout(() => {
+                        setHideButtons(false);
+                    }, 1000);
+                }} className={styles.button_download}><BiCloudDownload /></button>
             </div>
         </li>
     )

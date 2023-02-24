@@ -99,9 +99,9 @@ export default function Home() {
                   percent={percent}
                   setPercent={setPercent}
                   setMenu={setMenu}
-                  addTask={(e) => addTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted, url, setUrl,file,setFile,setPercent, setTaskGroup)}
+                  addTask={(e) => addTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted, url, setUrl,setPercent, setTaskGroup)}
                   updateTask={(e) => {
-                    updateTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, url, setUrl,file,setFile,setPercent, setUpdateId, setUpdate, setTaskGroup, updateId)
+                    updateTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, url, setUrl,setPercent, setUpdateId, setUpdate, setTaskGroup, updateId)
                     window.scrollTo(0, window.innerHeight)
                   }}
                 />
