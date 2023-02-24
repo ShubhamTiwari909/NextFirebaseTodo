@@ -15,7 +15,7 @@ function Display() {
             .sort((a, b) => sortTask(a, b))
             .map((data) => {
                 return (
-                    <Card data={data} />
+                    <Card key={data.id} data={data} />
                 )
             })
     )

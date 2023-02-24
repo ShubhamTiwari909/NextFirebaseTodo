@@ -32,7 +32,7 @@ function Card({data}) {
     }
 
     return (
-        <li key={data.id} className='p-relative' style={{ maxHeight: accordion ? "500px" : "60px" }} ref={listRef}>
+        <li className='p-relative' style={{ maxHeight: accordion ? "500px" : "60px" }} ref={listRef}>
             <p className={styles.completed}>{data.completed ? 'Completed' : ''}</p>
             <div className={styles.textGroup} style={{ textDecoration: data.completed ? "line-through" : "" }}>
                 <div className="flex-between-center">
