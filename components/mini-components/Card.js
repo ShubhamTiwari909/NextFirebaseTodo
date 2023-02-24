@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useState, useRef } from 'react'
+import { useState, useRef,useContext } from 'react'
 import PropTypes from "prop-types";
 import { TbEdit } from "react-icons/tb"
 import { MdDeleteSweep } from "react-icons/md"
@@ -9,8 +9,12 @@ import * as htmlToImage from 'html-to-image';
 import styles from "../../src/styles/Card.module.css"
 import greenTick from "../../src/images/green-tick.png"
 import redCross from "../../src/images/red-cross.png"
+import { AppContext } from '../Context'
 
-function Card({ data, setTitle, setTask, setPriority, setDeadline, setUrl, setTaskGroup, setUpdate, setUpdateId, getId, setMenu, deleteTask, getCompleted }) {
+
+function Card({data}) {
+    const { setTitle, setTask, setPriority, setDeadline, setUrl, setTaskGroup, setUpdate, setUpdateId, getId, setMenu, deleteTask, getCompleted } = useContext(AppContext)
+
     const [accordion, setAccordion] = useState(false)
     const [hideButtons, setHideButtons] = useState(false)
     const listRef = useRef(null);
@@ -28,7 +32,7 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setUrl, setTa
     }
 
     return (
-        <li className='p-relative' style={{ maxHeight: accordion ? "500px" : "60px" }} ref={listRef}>
+        <li key={data.id} className='p-relative' style={{ maxHeight: accordion ? "500px" : "60px" }} ref={listRef}>
             <p className={styles.completed}>{data.completed ? 'Completed' : ''}</p>
             <div className={styles.textGroup} style={{ textDecoration: data.completed ? "line-through" : "" }}>
                 <div className="flex-between-center">
@@ -81,18 +85,6 @@ function Card({ data, setTitle, setTask, setPriority, setDeadline, setUrl, setTa
 
 Card.propTypes = {
     data: PropTypes.object,
-    setTitle: PropTypes.func,
-    setTask: PropTypes.func,
-    setPriority: PropTypes.func,
-    setDeadline: PropTypes.func,
-    setTaskGroup: PropTypes.func,
-    setUpdate: PropTypes.func,
-    setUpdateId: PropTypes.func,
-    getId: PropTypes.func,
-    setMenu: PropTypes.func,
-    deleteTask: PropTypes.func,
-    getCompleted: PropTypes.func,
-
 }
 
 export default Card

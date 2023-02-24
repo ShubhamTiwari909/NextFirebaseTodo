@@ -1,11 +1,13 @@
+import { useContext } from 'react'
 import styles from '../src/styles/Form.module.css'
 import InputGroup from './mini-components/InputGroup'
 import SelectField from './mini-components/SelectField'
-import PropTypes from "prop-types"
 import { handleUpload } from "../methods/UploadImage"
+import { AppContext } from './Context'
 
-function Form({ update, setUpdate, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, file, setFile, setUrl, percent, setPercent, setMenu, addTask, updateTask }) {
-
+function Form() {
+    const { update, setUpdate, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, file, setFile, setUrl, percent, setPercent, setMenu, completed, setCompleted, url,
+        setUpdateId,updateId, setTaskGroup, addTask, updateTask } = useContext(AppContext);
     return (
         <div>
             <form className={styles.todoForm}>
@@ -62,7 +64,7 @@ function Form({ update, setUpdate, title, setTitle, task, setTask, priority, set
                     ?
                     <div className="flex-2 justify-center flex-wrap p-x-16">
                         <button className={`${styles.button_sm} ${styles.button_purple}`} onClick={(e) => {
-                            updateTask(e)
+                            updateTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, url, setUrl, setPercent, setUpdateId, setUpdate, setTaskGroup, updateId)
                             setMenu(false)
                         }}>Update</button>
                         <button className={`${styles.button_sm} ${styles.button_cancel}`} onClick={() => {
@@ -76,7 +78,7 @@ function Form({ update, setUpdate, title, setTitle, task, setTask, priority, set
                     </div>
                     :
                     <button className={`${styles.button_sm} ${styles.button_purple}`} onClick={(e) => {
-                        addTask(e)
+                        addTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted, url, setUrl, setPercent, setTaskGroup)
                         setMenu(false)
                     }}>Add</button>}
             </div>
@@ -84,18 +86,4 @@ function Form({ update, setUpdate, title, setTitle, task, setTask, priority, set
     )
 }
 
-Form.propTypes = {
-    title: PropTypes.string,
-    task: PropTypes.string,
-    priority: PropTypes.string,
-    deadline: PropTypes.string,
-    update: PropTypes.bool,
-    setUpdate: PropTypes.func,
-    setTitle: PropTypes.func,
-    setTask: PropTypes.func,
-    setPriority: PropTypes.func,
-    setDeadline: PropTypes.func,
-    addTask: PropTypes.func,
-    updateTask: PropTypes.func
-}
 export default Form

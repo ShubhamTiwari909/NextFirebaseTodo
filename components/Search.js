@@ -1,10 +1,10 @@
+import { useContext } from 'react'
 import styles from '../src/styles/Search.module.css'
 import InputGroup from './mini-components/InputGroup'
 import SelectField from './mini-components/SelectField'
-import PropTypes from "prop-types"
-
-function Search({ search, setSearch,searchCompleted,setSearchCompleted }) {
-
+import { AppContext } from './Context'
+function Search() {
+    const { search, setSearch,searchCompleted,setSearchCompleted } = useContext(AppContext)
     return (
         <div >
             <form className={styles.searchForm}>
@@ -25,13 +25,6 @@ function Search({ search, setSearch,searchCompleted,setSearchCompleted }) {
             </form>
         </div>
     )
-}
-
-Search.propTypes = {
-    search: PropTypes.string,
-    searchCompleted:PropTypes.string,
-    setSearch:PropTypes.func,
-    setSearchCompleted:PropTypes.func,
 }
 
 export default Search
