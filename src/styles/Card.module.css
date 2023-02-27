@@ -58,6 +58,7 @@
     transform: translate(-50%,0);
     text-align: center;
     color: rgb(90, 250, 90);
+    font-size: .75rem;
 }
 
 .tickCheckbox{
@@ -81,11 +82,3 @@
 
 
 
-/* IMAGE */
-.img_fluid{
-    width: 100%;
-    height:150px;
-    object-fit:fill;
-    border: 1px solid violet;
-    border-radius: 10px;
-}

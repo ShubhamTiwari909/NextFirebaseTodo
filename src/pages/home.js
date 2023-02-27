@@ -1,45 +1,21 @@
 import Head from 'next/head'
-import { useState, useEffect } from 'react'
-import { getId, addTask, updateTask, deleteTask, getData, getCompleted } from '../../firebase/dbOperations'
+import { useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Navbar from '../../components/Navbar'
 import Search from '../../components/Search'
 import Form from '../../components/Form'
 import Display from '../../components/Display'
-import { AppContext } from "../../components/Context"
-import PropTypes from "prop-types";
-
+import { AppContext } from '../../components/Context';
 // import Toggle from '../../components/mini-components/Toggle'
 // import { darkMode } from '../../methods/Darkmode';
 
 
 export default function Home() {
-  // For date input
-  var curr = new Date();
-  curr.setDate(curr.getDate());
-  var date = curr.toISOString().substring(0, 10);
-  //states
-  const [tokenId, setTokenId] = useState(null);
-  const [title, setTitle] = useState("")
-  const [task, setTask] = useState("")
-  const [priority, setPriority] = useState("P1")
-  const [deadline, setDeadline] = useState(date)
-  const [completed, setCompleted] = useState(false)
-  const [file, setFile] = useState("");
-  const [url, setUrl] = useState({});
-  const [percent, setPercent] = useState(0)
-  const [taskGroup, setTaskGroup] = useState([])
-  const [update, setUpdate] = useState(false)
-  const [updateId, setUpdateId] = useState(null)
-  const [search, setSearch] = useState("");
-  const [searchCompleted, setSearchCompleted] = useState("All");
+  const { setTokenId,getData,menu,setMenu,setTaskGroup } = useContext(AppContext)
 
-
-  const [menu, setMenu] = useState(false)
   const router = useRouter()
 
   /* Checking if the user is logged in or not. If not, it will redirect to the Login page. */
@@ -48,7 +24,6 @@ export default function Home() {
     setTokenId(token)
     if (token) {
       getData(setTaskGroup)
-      toast.info('Welcome')
     }
     if (!token) {
       router.push("/")
@@ -65,79 +40,34 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AppContext.Provider value={{
-        tokenId, update, setUpdate, taskGroup, setTaskGroup, title, setTitle, task, setTask,
-        priority, setPriority, deadline, setDeadline, file, setFile, percent, setPercent, setUrl, 
-        setMenu, completed, url, updateId,search, setSearch, searchCompleted, setSearchCompleted, 
-        setCompleted, setUpdateId, getId, getCompleted, deleteTask, addTask, updateTask
-      }}>
-        <ToastContainer position="top-right"
-          autoClose={3000}
-          newestOnTop={true}
-          closeOnClick
-          theme="colored"
-        />
-        {/* NAVBAR */}
-        <Navbar tokenId={Boolean(tokenId)} />
-
-        <main>
-          {/* <Toggle toggle={toggle} setToggle={setToggle} onClick={() => darkMode(setToggle)} /> */}
-          <div className='p-fixed z-100 bottom-0 w-full'>
-            <div className='m-l-16 m-b-10'>
-              <button className="menu" onClick={() => setMenu(!menu)}>Add or Search</button>
-            </div>
-            <div className="h-center">
-              <section className={`formContainer`} style={{ display: menu ? "block" : "none" }}>
-                <div className={`h-center`}>
-                  <Form />
-                </div>
-                <Search />
-              </section>
-            </div>
+      <ToastContainer position="top-right"
+        autoClose={3000}
+        newestOnTop={true}
+        closeOnClick
+        theme="colored"
+      />
+     
+      <main >
+        {/* <Toggle toggle={toggle} setToggle={setToggle} onClick={() => darkMode(setToggle)} /> */}
+        <div className='p-fixed z-100 bottom-0 w-full'>
+          <div className='m-l-16 m-b-10'>
+            <button className="menu" onClick={() => setMenu(!menu)}>Add or Search</button>
           </div>
+          <div className="flex justify-center">
+            <section className={`formContainer`} style={{ display: menu ? "block" : "none" }}>
+              <div className={`flex justify-center`}>
+                <Form />
+              </div>
+              <Search />
+            </section>
+          </div>
+        </div>
 
-          {/* READ TASKS */}
-          <Display />
-        </main>
-      </AppContext.Provider>
-    </div>
+        {/* READ TASKS */}
+        <Display />
+      </main>
+    </div >
   )
 }
 
 
-Home.propTypes = {
-  tokenId:PropTypes.string,
-  setTokenId:PropTypes.func,
-  title: PropTypes.string,
-  setTitle: PropTypes.func,
-  task: PropTypes.string,
-  setTask: PropTypes.func,
-  priority: PropTypes.string,
-  setPriority: PropTypes.func,
-  deadline: PropTypes.string,
-  setDeadline: PropTypes.func,
-  completed:PropTypes.bool,
-  setCompleted: PropTypes.func,
-  url:PropTypes.object,
-  setUrl:PropTypes.func,
-  percent:PropTypes.number,
-  setPercent: PropTypes.func,
-  taskGroup: PropTypes.array,
-  setTaskGroup: PropTypes.func,
-  update: PropTypes.bool,
-  setUpdate: PropTypes.func,
-  updateId:PropTypes.string,
-  setUpdateId: PropTypes.func,
-  search: PropTypes.string,
-  setSearch:PropTypes.string,
-  searchCompleted: PropTypes.string,
-  setSearchCompleted: PropTypes.func,
-  menu:PropTypes.bool,
-  setMenu: PropTypes.func,
-  getId: PropTypes.func,
-  getData:PropTypes.func,
-  addTask: PropTypes.func,
-  updateTask: PropTypes.func,
-  deleteTask: PropTypes.func,
-  getCompleted: PropTypes.func,
-}

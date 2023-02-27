@@ -59,7 +59,7 @@ function Form() {
                 <button onClick={() => handleUpload(file, setUrl, setPercent)} className={`${styles.button_sm} ${styles.button_blue}`}>Upload</button>
                 <p>{percent} % done</p>
             </div>
-            <div className="h-center m-t-40">
+            <div className="flex justify-center m-t-40">
                 {update
                     ?
                     <div className="flex-2 justify-center flex-wrap p-x-16">

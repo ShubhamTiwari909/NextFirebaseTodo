@@ -54,7 +54,7 @@ function Card({data}) {
                     <Image
                         src={data.url}
                         alt="Card Banner"
-                        className={styles.img_fluid}
+                        className={`img_fluid w-full`}
                         width={200}
                         height={200}
                         unoptimized
