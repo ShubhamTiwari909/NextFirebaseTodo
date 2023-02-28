@@ -28,6 +28,7 @@ export default function App({ Component, pageProps }) {
   const [search, setSearch] = useState("");
   const [searchCompleted, setSearchCompleted] = useState("All");
   const [menu, setMenu] = useState(false)
+  
   return (
     <AppContext.Provider value={{
       tokenId, setTokenId, update, setUpdate, taskGroup, setTaskGroup, title, setTitle, task, setTask,

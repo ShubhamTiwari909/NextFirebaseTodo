@@ -66,6 +66,9 @@ button {
 }
 
 
+
+
+
 /* HEIGHT */
 .h-screen {
     height: 120vh;
@@ -251,25 +254,10 @@ button {
 /* IMAGES */
 .img_fluid{
     object-fit:fill;
-    border: 1px solid violet;
     border-radius: 10px;
 }
 
 
 
-/* FULLSCREEN */
-.full-screen{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width:100vw;
-    height: 100vh;
-}
 
 
-
-@media screen and (max-width: 768px) {
-    .grid_2 {
-        gap: 0.2rem;
-    }
-}

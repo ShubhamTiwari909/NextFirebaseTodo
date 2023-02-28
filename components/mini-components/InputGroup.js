@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from "prop-types";
-import styles from '../../src/styles/Form.module.css'
+import styles from '@/styles/Form.module.css'
 
 function InputGroup({title,type,name,placeholder,className,value,onChange,accept,labelClassname=""}) {
     return (

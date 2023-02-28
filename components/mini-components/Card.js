@@ -6,7 +6,7 @@ import { MdDeleteSweep } from "react-icons/md"
 import { BsArrowDownCircleFill, BsArrowUpCircleFill } from "react-icons/bs"
 import { BiCloudDownload } from "react-icons/bi"
 import * as htmlToImage from 'html-to-image';
-import styles from "../../src/styles/Card.module.css"
+import styles from "@/styles/Card.module.css"
 import greenTick from "../../src/images/green-tick.png"
 import redCross from "../../src/images/red-cross.png"
 import { AppContext } from '../Context'

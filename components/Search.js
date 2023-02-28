@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import styles from '../src/styles/Search.module.css'
+import styles from '@/styles/Search.module.css'
 import InputGroup from './mini-components/InputGroup'
 import SelectField from './mini-components/SelectField'
 import { AppContext } from './Context'

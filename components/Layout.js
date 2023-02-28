@@ -8,7 +8,7 @@ function Layout({ children }) {
         <>
             {/* NAVBAR */}
             <div className='p-fixed top-0 z-99 w-full'>
-                <Navbar tokenId={Boolean(tokenId)} />
+                <Navbar tokenId={tokenId} />
             </div>
             <main>
                 {children}

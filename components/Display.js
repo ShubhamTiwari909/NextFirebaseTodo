@@ -1,7 +1,7 @@
 import { useMemo, useContext } from "react";
 import { sortTask } from "../methods/Sorting"
 import { priorityFilter, searchFilter } from "../methods/SearchFilter"
-import styles from "../src/styles/Display.module.css"
+import styles from "@/styles/Display.module.css"
 import Card from './mini-components/Card'
 import { AppContext } from './Context'
 

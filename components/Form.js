@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import styles from '../src/styles/Form.module.css'
+import styles from '@/styles/Form.module.css'
 import InputGroup from './mini-components/InputGroup'
 import SelectField from './mini-components/SelectField'
 import { handleUpload } from "../methods/UploadImage"
