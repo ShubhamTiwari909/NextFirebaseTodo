@@ -14,7 +14,9 @@ button {
     border: none;
     background-color:transparent
 }
-
+ul{
+    list-style: none;
+}
 
 /* BACKGROUNDS */
 .bg-white{
@@ -63,6 +65,10 @@ button {
 
 .justify-between {
     justify-content: space-between;
+}
+
+.gap-1{
+    gap: 1rem;
 }
 
 
@@ -215,18 +221,14 @@ button {
     display: none;
 }
 
-/* DARK MODE */
-/* .dark-mode {
-    background-color: #18191A;
-    color: whitesmoke;
+.desktop-hide{
+    display: none;
 }
-
-.light-mode {
-    background-color: whitesmoke;
-    color: #18191A;
-} */
-
-
+@media screen and (max-width:768px) {
+    .desktop-hide{
+        display: block;
+    }
+}
 
 /* MENU BUTTON */
 .menu {

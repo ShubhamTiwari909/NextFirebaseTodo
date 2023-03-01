@@ -4,7 +4,7 @@ import InputGroup from '../mini-components/InputGroup'
 import { handleUpload } from '../../firebase/Gallary/GallaryUpload';
 import { addImageToDB, getData } from "../../firebase/Gallary/dbOperations"
 
-function GallaryForm({setImages}) {
+function GallaryForm({setImages,folderName}) {
     const [file, setFile] = useState("");
     const [percent, setPercent] = useState(0);
     const [url, setUrl] = useState("")
@@ -23,12 +23,12 @@ function GallaryForm({setImages}) {
                 labelClassname={styles.file_label}
                 accept="image/*" />
             <button
-                onClick={(e) => handleUpload(e, file, url, setUrl, setPercent)}
+                onClick={(e) => handleUpload(e, file,folderName, url, setUrl, setPercent)}
                 className={`${styles.button_sm} ${styles.button_blue}`}>Add</button>
             <p>{percent} % done</p>
             <button className={`${styles.button_sm} ${percent === 100 ? styles.button_purple : "d-none"}`} onClick={(e) => {
-                addImageToDB(e, url, setUrl)
-                getData(setImages)
+                addImageToDB(e, url, setUrl,folderName)
+                getData(setImages,folderName)
                 setPercent(0)
             }} disabled={percent === 100 ? "" : "disabled"}>Upload</button>
         </form>

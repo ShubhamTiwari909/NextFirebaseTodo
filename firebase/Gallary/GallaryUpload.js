@@ -6,13 +6,13 @@ import {
     getMetadata
 } from "firebase/storage";
 
-export function handleUpload(e, file, url, setUrl, setPercent) {
+export function handleUpload(e, file,folderName, url, setUrl, setPercent) {
     e.preventDefault();
 
     if (!file) {
         alert("Please choose a file first!");
     }
-    const storageRef = ref(storage, `/GlobalImages/${sessionStorage.getItem("uid")}/${file.name}`);
+    const storageRef = ref(storage, `/GlobalImages/${sessionStorage.getItem("uid")}/${folderName}/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
     uploadTask.then((snapshot) => {
         getDownloadURL(snapshot.ref).then((url) => {

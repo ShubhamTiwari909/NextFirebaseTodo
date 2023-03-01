@@ -22,11 +22,10 @@ function Navbar({ tokenId }) {
           } >
             <Image src={Logo} className={styles.logo} alt="logo" />
             <nav className={styles.nav}>
-
               <>
                 <button className={styles.buttonRed}
                   onClick={() => logout(router, setTokenId)}>Logout</button>
-                <Link href="/gallary">Gallary</Link>
+                <Link href="/folders/navigation">Gallary</Link>
                 <Link href="/home">Tasklist</Link>
               </>
             </nav>

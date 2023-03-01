@@ -7,7 +7,7 @@ import { deleteImage } from "../../firebase/Gallary/dbOperations"
 import styles from '@/styles/Gallary.module.css'
 
 
-function GallaryCard({ id, setImages, imageUrl, imageName, setOverlay }) {
+function GallaryCard({ id,folderName, setImages, imageUrl, imageName, setOverlay }) {
     const [fullScreen, setFullScreen] = useState(false)
     return (
         <div>
@@ -22,7 +22,7 @@ function GallaryCard({ id, setImages, imageUrl, imageName, setOverlay }) {
                 }} />
             <div className={`${fullScreen ? "d-none" : "flex justify-between p-x-16"}`}>
                 <button onClick={() => {
-                    deleteImage(id, setImages, imageName)
+                    deleteImage(id, setImages, imageName,folderName)
                 }}><MdDeleteSweep size="1.5rem" color="rgb(255, 81, 116)" /></button>
                 <button onClick={() => {
                     saveAs(imageUrl, imageName)
