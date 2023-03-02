@@ -8,7 +8,7 @@ export default function Signin() {
     useEffect(() => {
         let token = sessionStorage.getItem("Token")
         if (token) {
-            router.push("/home")
+            router.push("/folders/navigation")
         }
     }, [])
 

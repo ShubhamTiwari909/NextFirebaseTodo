@@ -3,12 +3,15 @@ import Link from "next/link";
 import InputGroup from "./mini-components/InputGroup";
 import styles from '@/styles/Gallary.module.css'
 import formStyles from '@/styles/Form.module.css'
-import { getFolders, addFolderToDB } from "../firebase/Gallary/folderOperations";
+import { getFolders, addFolderToDB, updateFolderToDB } from "../firebase/Gallary/folderOperations";
 import { AiTwotoneFolderOpen } from "react-icons/ai"
+import FolderSettings from "./mini-components/FolderSettings";
 
 function FolderNavbar() {
     const [folder, setFolder] = useState("");
     const [folders, setFolders] = useState([])
+    const [update, setUpdate] = useState(false)
+    const [updateId, setUpdateId] = useState("")
 
     useEffect(() => {
         getFolders(setFolders)
@@ -17,7 +20,7 @@ function FolderNavbar() {
     return (
         <>
             <div className={`${styles.foldersNav}`}>
-                <form className="flex-2 flex-wrap justify-center items-center">
+                <form className="flex gap-8 flex-wrap justify-center items-center">
                     <InputGroup
                         title="Folder Name"
                         type="text"
@@ -27,21 +30,56 @@ function FolderNavbar() {
                         value={folder}
                         onChange={(e) => setFolder(e.target.value)}
                     />
-                    <button onClick={(e) => {
-                        addFolderToDB(e, folder, setFolder)
-                        getFolders(setFolders)
-                    }} className={`${formStyles.button_sm} ${formStyles.button_blue}`}>Add</button>
+                    {update ?
+                        <div className="flex gap-8 justify-center flex-wrap p-x-4">
+                            <button onClick={(e) => {
+                                updateFolderToDB(e, folder, setFolder, updateId)
+                                getFolders(setFolders)
+                                setUpdate(false)
+                            }} className={`${formStyles.button_sm} ${formStyles.button_blue}`}>Update</button>
+                            <button className={`${formStyles.button_sm} ${formStyles.button_cancel}`} onClick={() => {
+                                setFolder("")
+                                setUpdate(false)
+                            }}>Cancel</button>
+                        </div>
+                        :
+                        <button onClick={(e) => {
+                            addFolderToDB(e, folder, setFolder)
+                            getFolders(setFolders)
+                        }} className={`${formStyles.button_sm} ${formStyles.button_blue}`}>Add</button>
+                    }
                 </form>
                 <ul className={styles.foldersList}>
                     <li className={`${styles.folderLink}`}>
-                        <Link href={`/folders/default`} className="text-black flex gap-1">
-                            <AiTwotoneFolderOpen color="black" size="1.2rem" /> Default
+                        <Link href={{
+                            pathname: `/folders/default`,
+                            query: {
+                                folderName: "Default"
+                            }
+                        }} className="text-black flex gap-4 items-center">
+                            <AiTwotoneFolderOpen color="black" size="20px" /> Default
                         </Link>
                     </li>
-                    {folders.map(({ id, folderName }) => {
+                    {folders.map(({ id, folderName, folderUrl }) => {
                         return (
-                            <li key={id} className={`${styles.folderLink}`}>
-                                <Link href={`/folders/${folderName}`} className={`text-black flex gap-1`}><AiTwotoneFolderOpen color="black" size="1.2rem" /> {folderName.slice(0, 10)}</Link>
+                            <li key={id} className={`${styles.folderLink} relative`}>
+                                <Link href={{
+                                    pathname: `/folders/${folderUrl}`,
+                                    query: {
+                                        folderName: folderName
+                                    }
+                                }} className={`text-black flex gap-4 items-center`}>
+                                    <AiTwotoneFolderOpen color="black" size="20px" />  {folderName.slice(0, 10)}
+                                </Link>
+                                <FolderSettings
+                                id={id}
+                                folderName={folderName}
+                                folderUrl={folderUrl}
+                                setUpdateId={setUpdateId}
+                                setFolder={setFolder}
+                                setUpdate={setUpdate}
+                                setFolders={setFolders}
+                                />
                             </li>
                         )
                     })}
@@ -52,3 +90,4 @@ function FolderNavbar() {
 }
 
 export default FolderNavbar
+

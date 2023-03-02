@@ -44,7 +44,7 @@ function Form() {
                     onChange={(e) => setPriority(e.target.value)}
                     options={["P1", "P2", "P3", "P4", "P5"]} />
             </form>
-            <div className="flex-2 justify-center items-center flex-wrap m-t-20">
+            <div className="flex gap-8 justify-center items-center flex-wrap mt-5">
                 <InputGroup
                     title="Choose a File"
                     type="file"
@@ -59,10 +59,10 @@ function Form() {
                 <button onClick={() => handleUpload(file, setUrl, setPercent)} className={`${styles.button_sm} ${styles.button_blue}`}>Upload</button>
                 <p>{percent} % done</p>
             </div>
-            <div className="flex justify-center m-t-40">
+            <div className="flex justify-center mt-10">
                 {update
                     ?
-                    <div className="flex-2 justify-center flex-wrap p-x-16">
+                    <div className="flex gap-8 justify-center flex-wrap p-x-4">
                         <button className={`${styles.button_sm} ${styles.button_purple}`} onClick={(e) => {
                             updateTask(e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, url, setUrl, setPercent, setUpdateId, setUpdate, setTaskGroup, updateId)
                             setMenu(false)

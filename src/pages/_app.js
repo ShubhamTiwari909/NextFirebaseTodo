@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { AppContext } from "../../components/Context"
 import { getId, addTask, updateTask, deleteTask, getData, getCompleted } from '../../firebase/dbOperations'
 import PropTypes from "prop-types";
+import Navbar from '../../components/Navbar'
 
 
 
@@ -20,7 +21,7 @@ export default function App({ Component, pageProps }) {
   const [deadline, setDeadline] = useState(date)
   const [completed, setCompleted] = useState(false)
   const [file, setFile] = useState("");
-  const [url, setUrl] = useState({url:"",filename:""});
+  const [url, setUrl] = useState({ url: "", filename: "" });
   const [percent, setPercent] = useState(0)
   const [taskGroup, setTaskGroup] = useState([])
   const [update, setUpdate] = useState(false)
@@ -28,14 +29,21 @@ export default function App({ Component, pageProps }) {
   const [search, setSearch] = useState("");
   const [searchCompleted, setSearchCompleted] = useState("All");
   const [menu, setMenu] = useState(false)
-  
+
+  const [images, setImages] = useState([])
+
+
   return (
     <AppContext.Provider value={{
       tokenId, setTokenId, update, setUpdate, taskGroup, setTaskGroup, title, setTitle, task, setTask,
       priority, setPriority, deadline, setDeadline, file, setFile, percent, setPercent, setUrl, menu,
       setMenu, completed, url, updateId, search, setSearch, searchCompleted, setSearchCompleted,
-      setCompleted, setUpdateId, getId, getData, getCompleted, deleteTask, addTask, updateTask
+      setCompleted, setUpdateId, getId, getData, getCompleted, deleteTask, addTask, updateTask,
+      images, setImages
     }}>
+      <div className='fixed top-0 z-99 w-full'>
+        <Navbar tokenId={tokenId} />
+      </div>
       <Layout>
         <Component {...pageProps} />
       </Layout>

@@ -1,128 +1,8 @@
-/* Basic resetting */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-a {
-    text-decoration: none;
-}
-
-button {
-    cursor: pointer;
-    border: none;
-    background-color:transparent
-}
-ul{
-    list-style: none;
-}
-
-/* BACKGROUNDS */
-.bg-white{
-    background-color:#ffffff;
-    color:#000000;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
-/* WIDTH AND HEIGHTS */
-.w-full {
-    width: 100%;
-    max-width: 100%;
-}
-
-.min-h-screen {
-    min-height: 100vh;
-}
-
-/* FLEX */
-.flex{
-    display: flex;
-}
-.flex-between-center {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.flex-2 {
-    display: flex;
-    gap: 2rem;
-}
-
-.justify-center {
-    justify-content: center;
-}
-
-.items-center {
-    align-items: center;
-}
-
-.flex-wrap {
-    flex-wrap: wrap;
-}
-
-.justify-between {
-    justify-content: space-between;
-}
-
-.gap-1{
-    gap: 1rem;
-}
-
-
-
-
-
-/* HEIGHT */
-.h-screen {
-    height: 120vh;
-}
-
-
-/* MARGINS */
-.m-t-5 {
-    margin-top: 5px
-}
-
-.m-t-20 {
-    margin-top: 20px
-}
-
-.m-t-40 {
-    margin-top: 40px
-}
-.m-t-100{
-    margin-top: 100px;
-}
-
-
-
-.m-r-16 {
-    margin-right: 1rem;
-}
-
-.m-l-16 {
-    margin-left: 1rem;
-}
-
-.m-b-10 {
-    margin-bottom: 10px;
-}
-
-/* PADDINGS */
-.p-t-20 {
-    padding-top: 20px
-}
-
-.p-x-16 {
-    padding: 0 1rem;
-}
-
-.p-16{
-    padding:1rem;
-}
 
 /* TYPOGRAPHY */
 .text-ellipse {
@@ -132,50 +12,6 @@ ul{
     overflow: hidden;
 }
 
-.cursor-pointer {
-    cursor: pointer;
-}
-.text-center {
-    text-align: center;
-}
-.font-w-600{
-    font-weight: 600;
-}
-.text-black {
-    color: #000000;
-}
-
-.text-lg{
-    font-size: 2rem;
-}
-.text-white {
-    color:#ffffff;
-}
-
-
-/* POSITIONS */
-.p-relative {
-    position: relative;
-    isolation: isolate;
-}
-
-.p-absolute {
-    position: absolute;
-}
-
-.p-fixed {
-    position: fixed;
-}
-
-.z-101{
-    z-index: 101;
-}
-.z-100 {
-    z-index: 100;
-}
-.z-99{
-    z-index: 99;
-}
 
 .absolute-center {
     top: 50%;
@@ -189,47 +25,6 @@ ul{
     transform: translateX(-50%);
 }
 
-.top-5{
-    top: 5px; 
-}
-.left-5 {
-    left: 5px;
-}
-
-.right-5 {
-    right: 5px;
-}
-
-.top-0{
-    top: 0;
-    bottom: unset;
-}
-.bottom-0 {
-    bottom: 0;
-    top: unset;
-}
-
-
-
-
-
-/* DISPLAY */
-.d-block{
-    display: block;
-}
-.d-none{
-    display: none;
-}
-
-.desktop-hide{
-    display: none;
-}
-@media screen and (max-width:768px) {
-    .desktop-hide{
-        display: block;
-    }
-}
-
 /* MENU BUTTON */
 .menu {
     border: 1px solid grey;
@@ -238,7 +33,6 @@ ul{
     border-radius: 20px;
     color: whitesmoke;
 }
-
 
 
 /* Containers*/
@@ -253,11 +47,6 @@ ul{
 
 
 
-/* IMAGES */
-.img_fluid{
-    object-fit:fill;
-    border-radius: 10px;
-}
 
 
 

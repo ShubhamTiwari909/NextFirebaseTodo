@@ -33,7 +33,7 @@
     padding:0.3rem 0.8rem;
     color: black;
     width: 100px;
-    min-width: 100px;
+    min-width: 180px;
 }
 .select_md:focus,
 .select_md:hover{

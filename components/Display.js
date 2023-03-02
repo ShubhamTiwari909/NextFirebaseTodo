@@ -20,10 +20,10 @@ function Display() {
             })
     )
     return (
-        <section className={`${styles.listContainer} m-t-100`}>
-            <h1>Task List</h1>
-            <small className={"flex justify-center font-w-600"}>{search === "" ? "" : "Results for " + search}</small>
-            <small className={"flex justify-center font-w-600"}>{searchCompleted === "All" ? "" : "Results for " + searchCompleted}</small>
+        <section className={`${styles.listContainer} mt-24`}>
+            <h1 className="text-2xl font-bold text-slate-700">Task List</h1>
+            <small className={"flex justify-center font-semibold"}>{search === "" ? "" : "Results for " + search}</small>
+            <small className={"flex justify-center font-semibold"}>{searchCompleted === "All" ? "" : "Results for " + searchCompleted}</small>
             <ul className={styles.listTask}>
                 {list.length === 0 ? <h2 className="w-full text-center">No Task Found</h2> : list}
             </ul>

@@ -23,9 +23,6 @@ export function handleUpload(e, file,folderName, url, setUrl, setPercent) {
                 .catch((error) => {
                 });
         });
-        setTimeout(() => {
-            console.log(url)
-        }, 3000);
     });
     uploadTask.on(
         "state_changed",

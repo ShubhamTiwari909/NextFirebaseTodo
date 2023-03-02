@@ -49,8 +49,8 @@ export default function Home() {
      
       <main >
         {/* <Toggle toggle={toggle} setToggle={setToggle} onClick={() => darkMode(setToggle)} /> */}
-        <div className='p-fixed z-100 bottom-0 w-full'>
-          <div className='m-l-16 m-b-10'>
+        <div className='fixed z-100 bottom-0 w-full max-w-full'>
+          <div className='ml-4 mb-2.5'>
             <button className="menu" onClick={() => setMenu(!menu)}>Add or Search</button>
           </div>
           <div className="flex justify-center">
@@ -62,7 +62,6 @@ export default function Home() {
             </section>
           </div>
         </div>
-
         {/* READ TASKS */}
         <Display />
       </main>

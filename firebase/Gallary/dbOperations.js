@@ -28,18 +28,19 @@ export const getData = async (setImages, folderName) => {
 
 
 export const deleteImage = (id, setImages, filename, folderName) => {
+    console.log(filename)
     const fieldToDelete = doc(database, `/Todos/Images/${sessionStorage.getItem("uid")}/${folderName}/images`, id)
     const storageRef = ref(storage, `/GlobalImages/${sessionStorage.getItem("uid")}/${folderName}/${filename}`);
     // Delete the file
     deleteObject(storageRef).then(() => {
-        console.log("File deleted successfully")
     }).catch((error) => {
         console.log("Uh-oh, an error occurred!")
     });
 
     deleteDoc(fieldToDelete, id)
         .then(() => {
-            getData(setImages)
+            getData(setImages,folderName)
+
         }).catch(err => {
             console.error(err)
         })
