@@ -53,7 +53,7 @@ function Card({ data }) {
                 <Image
                     src={data.url}
                     alt="Card Banner"
-                    className={`object-fill rounded-lg w-full`}
+                    className={`object-fill rounded-lg w-full h-40`}
                     width={200}
                     height={200}
                     unoptimized
