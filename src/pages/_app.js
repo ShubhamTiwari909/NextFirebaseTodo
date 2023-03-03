@@ -30,16 +30,12 @@ export default function App({ Component, pageProps }) {
   const [searchCompleted, setSearchCompleted] = useState("All");
   const [menu, setMenu] = useState(false)
 
-  const [images, setImages] = useState([])
-
-
   return (
     <AppContext.Provider value={{
       tokenId, setTokenId, update, setUpdate, taskGroup, setTaskGroup, title, setTitle, task, setTask,
       priority, setPriority, deadline, setDeadline, file, setFile, percent, setPercent, setUrl, menu,
       setMenu, completed, url, updateId, search, setSearch, searchCompleted, setSearchCompleted,
       setCompleted, setUpdateId, getId, getData, getCompleted, deleteTask, addTask, updateTask,
-      images, setImages
     }}>
       <div className='fixed top-0 z-99 w-full'>
         <Navbar tokenId={tokenId} />
