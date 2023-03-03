@@ -10,7 +10,7 @@ import styles from "@/styles/Card.module.css"
 import greenTick from "../../src/images/green-tick.png"
 import redCross from "../../src/images/red-cross.png"
 import { AppContext } from '../Context'
-
+import NoImage from "../../src/images/no-image.jpg"
 
 function Card({ data }) {
     const { setTitle, setTask, setPriority, setDeadline, setUrl, setTaskGroup, setUpdate, setUpdateId, getId, setMenu, deleteTask, getCompleted } = useContext(AppContext)
@@ -26,7 +26,7 @@ function Card({ data }) {
         const dataUrl = await htmlToImage.toPng(listRef.current);
         // download image
         const link = document.createElement('a');
-        link.download = `${filename}.png`;
+        link.download = `${filename}`;
         link.href = dataUrl;
         link.click();
     }
@@ -51,14 +51,14 @@ function Card({ data }) {
                     <small className={styles.priority_text}>{data.priority}</small>
                 </div>
                 <Image
-                    src={data.url}
+                    src={data.url === "" ? NoImage : data.url}
                     alt="Card Banner"
                     className={`object-fill rounded-lg w-full h-40`}
                     width={200}
                     height={200}
                     unoptimized
                     style={{ filter: data.completed ? "grayscale(100%)" : "" }} />
-                <p className={styles.description_text}>{data.task}</p>
+                <p className={`${styles.description_text} text-sm`}>{data.task}</p>
             </div>
             <div className={`${styles.buttonGroup}`} style={{ display: hideButtons ? "none" : "" }}>
                 <button className={styles.button_update} onClick={() => {

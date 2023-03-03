@@ -14,7 +14,6 @@ import { toast } from 'react-toastify'
 
 export const addTask = (e, title, setTitle, task, setTask, priority, setPriority, deadline, setDeadline, completed, setCompleted, url, setUrl, setPercent, setTaskGroup) => {
     e.preventDefault();
-    console.log(url)
     if (title === "" || title.startsWith(" ") || task === "" || task.startsWith(" ")) {
         alert(`Please Fill both the fields`)
     }
@@ -38,7 +37,7 @@ export const addTask = (e, title, setTitle, task, setTask, priority, setPriority
                 priority: priority,
                 deadline: deadline,
                 completed: completed,
-                url: url.url === "" ? "https://dl.dropboxusercontent.com/s/mb6pzc7ioin4ywo/no-image.jpg?dl=0" : url.url,
+                url: url.url === "" ? "" : url.url,
                 filename: url.filename === "" ? "No Image" : url.filename
             }).then(() => {
                 getData(setTaskGroup)
